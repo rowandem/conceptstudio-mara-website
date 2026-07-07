@@ -56,7 +56,9 @@ body{
   overflow:hidden;
 }
 @media (max-width:900px){
-  .sidebar{position:relative;height:auto;min-height:auto;padding:32px 24px 80px}
+  .sidebar{position:relative;height:auto;min-height:auto;padding:0 !important}
+  .sidebar > *:not(.sidebar-marquee){display:none !important}
+  .sidebar-marquee{position:static}
 }
 
 /* WHITE DIVIDER STROKE between blue panel and page */
@@ -108,11 +110,30 @@ body{
 }
 @media (max-width:900px){
   .split-tabs{
-    position:static;transform:none;left:auto;top:auto;
-    flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px;
-    padding:20px 16px;background:var(--sky);
+    position:sticky;top:0;transform:none;left:auto;
+    flex-direction:row;flex-wrap:nowrap;justify-content:center;gap:32px !important;
+    padding:12px 10px;background:var(--sky);
+    border-bottom:2px solid #ffffff;
+    z-index:40;
+    width:100% !important;
+    height:auto !important;
+    box-sizing:border-box;
+    overflow-x:auto;
   }
-  .split-tabs a.active{border:none;margin-left:0}
+  .split-tabs a{
+    writing-mode:horizontal-tb;
+    text-orientation:mixed;
+    width:auto !important;
+    font-size:11px !important;
+    padding:8px 12px;
+    border-radius:999px;
+    flex-shrink:0;
+  }
+  .split-tabs a.active{
+    border:none;margin-left:0;
+    width:auto !important;
+    background:var(--navy);color:var(--sky);
+  }
 }
 
 /* SIDEBAR MARQUEE — slow right-to-left strip */
@@ -251,6 +272,7 @@ body{
 .sidebar-bottom{
   display:flex;flex-direction:column;gap:16px;
   align-items:center;
+  margin-top:32px;
   width:100%;
 }
 .sidebar-social{
@@ -263,9 +285,9 @@ body{
   border:1px solid rgba(15,26,92,0.3);
   display:flex;align-items:center;justify-content:center;
   color:var(--navy);text-decoration:none;
-  font-family:'Inter Tight';font-weight:700;font-size:13px;
   transition:background .2s,color .2s,border-color .2s;
 }
+.sidebar-social a svg{display:block}
 .sidebar-social a:hover{
   background:var(--navy);color:var(--sky);border-color:var(--navy);
 }
@@ -293,6 +315,37 @@ body{
   min-width:0;
 }
 
+/* Mobile floating logo on hero */
+.hero-logo-mobile,.hero-brand-mobile{
+  display:none;
+}
+@media (max-width:900px){
+  .hero-brand-mobile{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0px;
+    position:absolute;
+    top:46px;right:24px;
+    z-index:3;
+  }
+  .hero-logo-mobile{
+    display:block;
+    width:130px;height:130px;
+    animation:float-sb 7s ease-in-out infinite;
+    filter:drop-shadow(0 6px 16px rgba(10,19,68,0.4));
+  }
+  .hero-brand-mobile .brand-title{
+    font-family:'Inter Tight';font-weight:800;
+    font-size:13px;letter-spacing:0.01em;
+    margin-top:-14px;
+    text-transform:uppercase;
+    text-align:center;
+    color:var(--cream);
+    text-shadow:0 2px 12px rgba(10,19,68,0.6);
+  }
+}
+
 /* QUOTE HERO (big & bold) */
 .quote-hero{
   background:
@@ -305,7 +358,7 @@ body{
   position:relative;
   overflow:hidden;
 }
-@media (max-width:900px){.quote-hero{padding:60px 24px 72px}}
+@media (max-width:900px){.quote-hero{padding:48px 24px 56px}}
 .quote-hero::before{
   content:"";position:absolute;inset:0;
   background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,0.03) 40px,rgba(255,255,255,0.03) 41px);
@@ -405,7 +458,7 @@ body{
   transform:rotate(180deg);
 }
 @media (max-width:900px){
-  .quote-hero{padding:60px 24px 80px}
+  .quote-hero{padding:48px 24px 56px;min-height:72vh}
   .quote-hero .scroll-cue{display:none}
 }
 
@@ -530,7 +583,10 @@ body{
   color:var(--navy);text-decoration:underline;
   text-transform:uppercase;letter-spacing:0.12em;
 }
-@media (max-width:600px){.stories{padding:60px 20px}}
+@media (max-width:600px){
+  .stories{padding:60px 20px}
+  .stories-grid{grid-template-columns:1fr}
+}
 
 /* ITINERARY / UPCOMING */
 .itinerary{
@@ -541,7 +597,7 @@ body{
 .itinerary h2{color:var(--navy)}
 .itinerary-list{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:24px;
   max-width:100%;
   align-items:stretch;
@@ -612,6 +668,7 @@ body{
   border-radius:10px;
   padding:12px 16px 12px 42px;
   box-shadow:0 2px 8px rgba(15,26,92,0.08);
+  overflow-wrap:anywhere;
 }
 .itin-quotes li::before{
   content:'\201C';
@@ -654,13 +711,18 @@ body{
 .itin-img.i2{background:var(--cream)}
 .itin-img.i3{background:var(--navy)}
 .itin-img.i4{background:var(--navy)}
+@media (max-width:1100px) and (min-width:701px){
+  .itin-body h4{flex-wrap:wrap}
+  .itinerary-list{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .itin-body .desc{min-height:0}
+}
 @media (max-width:700px){
   .itin-row{gap:14px;padding:20px 16px}
   .itinerary-list{grid-template-columns:1fr}
-  .itin-num{font-size:38px}
+  .itinerary{padding:60px 20px}
+  .itin-body .desc{min-height:0}
   .itin-body h4{font-size:clamp(17px,5vw,24px);gap:7px}
   .itin-body h4 .to{padding:2px 10px}
-  .itinerary{padding:60px 20px}
 }
 
 /* ABOUT US */
@@ -738,6 +800,11 @@ body{
   background:var(--cream);
   padding:80px 40px 60px;
   text-align:center;
+}
+@media (max-width:600px){
+  .outro{padding:60px 20px 48px}
+  .radio-group{gap:8px}
+  .radio-pill span{padding:10px 14px;font-size:11px}
 }
 .outro .eyebrow{
   font-family:'JetBrains Mono',monospace;font-size:11px;
@@ -869,7 +936,7 @@ body{
   <div class="divider-stroke" aria-hidden="true"></div>
 
   <!-- SPLIT TABS (straddle the blue/cream divider) -->
-  <nav class="split-tabs" style="font-family: system-ui; font-weight: 400; width: 108px">
+  <nav class="split-tabs" style="font-family: system-ui; font-weight: 400; width: 108px; gap: 4px">
     <a href="#top" class="active" style="font-family: monospace; font-size: 10px; width: 30px">CSM</a>
     <a href="#about" style="font-size: 10px; width: 30px">Services</a>
     <a href="#aboutus" style="font-size: 10px; width: 30px">About Us</a>
@@ -909,15 +976,21 @@ body{
       </a>
     </div>
 
-    <div class="sidebar-divider"></div>
-
     <!-- BOTTOM: socials + status -->
     <div class="sidebar-bottom">
       <div class="sidebar-social">
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="Pinterest">Pi</a>
-        <a href="#" aria-label="Email">@</a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.05-3.02 4.16V23H8V8z"></path>
+          </svg>
+        </a>
       </div>
     </div>
 
@@ -944,6 +1017,10 @@ body{
 
     <!-- QUOTE HERO -->
     <section class="quote-hero" data-screen-label="quote">
+      <div class="hero-brand-mobile">
+        <img class="hero-logo-mobile" src="assets/logo-csm-v2.png" alt="CSM logo" />
+        <span class="brand-title" style="color: #AFFF57">Concept Studio MARA</span>
+      </div>
       <blockquote>
         We build<br/>
         what brands<br/>
@@ -1008,9 +1085,12 @@ body{
         <div class="itin-row reveal">
           <div class="itin-img i4" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none">
-              <circle cx="24" cy="32" r="14" fill="#FF7AB6" opacity="0.9"/>
-              <circle cx="40" cy="32" r="14" fill="#0F1A5C" opacity="0.9"/>
-              <path d="M32 20 a14 14 0 0 1 0 24 a14 14 0 0 1 0 -24 z" fill="#5BC23A" opacity="0.95"/>
+              <!-- person left (pink) -->
+              <circle cx="24" cy="24" r="7" fill="#FF7AB6"/>
+              <path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#FF7AB6"/>
+              <!-- person right (cream) -->
+              <circle cx="41" cy="24" r="7" fill="#F5EFE4"/>
+              <path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/>
             </svg>
           </div>
           <div class="itin-body">
@@ -1132,10 +1212,18 @@ body{
         <a href="mailto:ConceptStudio@Mara.com">Contact</a>
       </div>
       <div class="outro-social">
-        <a href="#" aria-label="Instagram">◎</a>
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="Pinterest">⬤</a>
-        <a href="#" aria-label="X">✕</a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.05-3.02 4.16V23H8V8z"></path>
+          </svg>
+        </a>
       </div>
       <span class="outro-copyright">© 2026 — Concept Studio MARA — Rotterdam</span>
     </section>
