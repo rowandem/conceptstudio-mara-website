@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Concept Studio MARA — We build what brands have not thought of yet.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F1A5C;
+  --navy-deep:#0A1344;
+  --pink:#FF7AB6;
+  --pink-soft:#FFB6D6;
+  --sky:#C8D4F0;
+  --sky-deep:#A8BCE8;
+  --cream:#F5EFE4;
+  --cream-warm:#EEE5D2;
+  --yellow:#F6E94B;
+  --green:#7EE787;
+  --logo-green:#8CE63C;
+  --ink:#0A0E2A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--sky);
+  color:var(--navy);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;text-transform:uppercase}
+.display{font-family:'Inter Tight',sans-serif;font-weight:800;letter-spacing:-0.035em;line-height:0.92}
+
+/* ==================== LAYOUT ==================== */
+.app{
+  display:grid;
+  grid-template-columns:280px minmax(0,1fr);
+  min-height:100vh;
+  position:relative;
+}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+}
+
+/* ==================== STATIC LEFT ==================== */
+.sidebar{
+  background:var(--sky);
+  color:var(--navy);
+  position:sticky;top:0;
+  height:100vh;
+  padding:40px 40px 80px;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+@media (max-width:900px){
+  .sidebar{position:relative;height:auto;min-height:auto;padding:32px 24px 80px}
+}
+
+/* WHITE DIVIDER STROKE between blue panel and page */
+.divider-stroke{
+  position:fixed;
+  left:279px;top:0;bottom:0;
+  width:2px;
+  background:#ffffff;
+  z-index:29;
+  pointer-events:none;
+}
+@media (max-width:900px){.divider-stroke{display:none}}
+
+/* SPLIT TABS — horizontal nav pills straddling the blue/cream divider */
+.split-tabs{
+  position:fixed;
+  left:281px;top:40px;
+  transform:none;
+  display:flex;flex-direction:column;gap:6px;
+  align-items:flex-start;
+  z-index:30;
+}
+.split-tabs a{
+  background:var(--sky-deep);
+  color:rgba(15,26,92,0.5);
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  text-transform:uppercase;letter-spacing:0.14em;
+  writing-mode:vertical-rl;
+  text-orientation:upright;
+  width:34px;box-sizing:border-box;
+  display:flex;align-items:center;justify-content:center;
+  padding:12px 0;
+  border-radius:0 8px 8px 0;
+  text-decoration:none;white-space:nowrap;text-align:center;
+  transition:background .2s,color .2s,width .2s;
+  position:relative;z-index:1;
+}
+.split-tabs a:hover{
+  color:rgba(15,26,92,0.8);
+}
+.split-tabs a.active{
+  background:var(--sky);color:var(--navy);
+  width:40px;
+  font-weight:600;
+  margin-left:-2px;
+  border-top:2px solid #ffffff;
+  border-right:2px solid #ffffff;
+  border-bottom:2px solid #ffffff;
+}
+@media (max-width:900px){
+  .split-tabs{
+    position:static;transform:none;left:auto;top:auto;
+    flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px;
+    padding:20px 16px;background:var(--sky);
+  }
+  .split-tabs a.active{border:none;margin-left:0}
+}
+
+/* SIDEBAR MARQUEE — slow right-to-left strip */
+.sidebar-marquee{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  background:var(--navy);
+  color:var(--sky);
+  padding:14px 0;
+  overflow:hidden;
+  white-space:nowrap;
+  pointer-events:none;
+}
+.sidebar-marquee-track{
+  display:inline-block;
+  animation:sb-scroll 45s linear infinite;
+  font-family:'Inter Tight';font-weight:700;
+  font-size:18px;
+  letter-spacing:-0.01em;
+}
+.sidebar-marquee-track span{margin:0 14px}
+.sidebar-marquee-track .star{
+  color:transparent;
+  position:relative;
+  display:inline-block;
+  width:0.42em;
+}
+.sidebar-marquee-track .star::before{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:0.42em;height:0.42em;
+  border-radius:50%;
+  background:var(--pink);
+}
+@keyframes sb-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* TOP: logo + name */
+.sidebar-top{
+  display:flex;flex-direction:column;align-items:center;
+  gap:14px;
+  text-align:center;
+  margin-top:56px;
+}
+.sidebar-logo{
+  width:124px;height:124px;
+  animation:float-sb 7s ease-in-out infinite;
+}
+@keyframes float-sb{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-10px) rotate(4deg)}
+}
+.sidebar-wordmark{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:clamp(18px,1.8vw,22px);
+  line-height:1;letter-spacing:-0.03em;
+  color:var(--navy);
+}
+.sidebar-wordmark .sub{
+  display:block;
+  font-family:'JetBrains Mono',monospace;font-weight:500;
+  font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--navy);opacity:0.6;
+  margin-top:10px;
+}
+
+/* MIDDLE: divider + contact */
+.sidebar-divider{
+  width:100%;height:1px;
+  background:rgba(15,26,92,0.2);
+  margin:auto 0 24px;
+}
+
+.sidebar-nav{
+  display:flex;flex-direction:column;gap:2px;
+}
+.sidebar-nav a{
+  font-family:'Inter Tight';font-weight:600;
+  font-size:34px;letter-spacing:-0.025em;line-height:1.15;
+  color:var(--navy);text-decoration:none;
+  opacity:0.55;
+  transition:opacity .2s,padding-left .25s;
+  display:inline-flex;align-items:center;gap:12px;
+}
+.sidebar-nav a::before{
+  content:"";
+  width:0;height:2px;background:var(--navy);
+  transition:width .25s;
+}
+.sidebar-nav a:hover,.sidebar-nav a.active{opacity:1}
+.sidebar-nav a:hover::before,.sidebar-nav a.active::before{width:20px}
+
+.sidebar-contact{
+  display:flex;flex-direction:column;gap:14px;
+  max-width:340px;
+  width:100%;
+  margin:54px auto 0;
+  text-align:center;
+}
+.sidebar-cta{
+  margin-top:22px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--cream);background:var(--navy);
+  padding:15px 22px;border-radius:10px;
+  text-decoration:none;
+  transition:background .2s,color .2s,transform .2s;
+}
+.sidebar-cta:hover{
+  background:var(--pink);color:var(--navy);transform:translateY(-2px);
+}
+.sidebar-cta .arrow{transition:transform .2s}
+.sidebar-cta:hover .arrow{transform:translateX(4px)}
+.contact-item{
+  display:flex;flex-direction:column;gap:2px;
+}
+.contact-item .label{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--navy);opacity:0.55;
+  text-transform:uppercase;letter-spacing:0.12em;
+}
+.contact-item .val{
+  font-family:'Inter Tight';font-weight:500;font-size:15px;
+  color:var(--navy);letter-spacing:-0.01em;
+  line-height:1.3;
+}
+.contact-item a{color:inherit;text-decoration:none;transition:color .2s}
+.contact-item a:hover{color:var(--pink)}
+
+/* BOTTOM: socials + meta */
+.sidebar-bottom{
+  display:flex;flex-direction:column;gap:16px;
+  align-items:center;
+  width:100%;
+}
+.sidebar-social{
+  display:flex;gap:10px;
+  justify-content:center;
+}
+.sidebar-social a{
+  width:36px;height:36px;
+  border-radius:50%;
+  border:1px solid rgba(15,26,92,0.3);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--navy);text-decoration:none;
+  font-family:'Inter Tight';font-weight:700;font-size:13px;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.sidebar-social a:hover{
+  background:var(--navy);color:var(--sky);border-color:var(--navy);
+}
+.sidebar-meta{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--navy);opacity:0.55;
+  text-transform:uppercase;letter-spacing:0.1em;
+  display:flex;align-items:center;gap:10px;
+}
+.sidebar-meta .pulse{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--pink);
+  animation:pulse 2s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes pulse{
+  0%,100%{opacity:0.5;transform:scale(0.9)}
+  50%{opacity:1;transform:scale(1.15)}
+}
+
+/* ==================== RIGHT / SCROLL AREA ==================== */
+.content{
+  background:var(--cream);
+  min-height:100vh;
+  min-width:0;
+}
+
+/* QUOTE HERO (big & bold) */
+.quote-hero{
+  background:
+    linear-gradient(180deg, rgba(10,19,68,0.45) 0%, rgba(10,19,68,0.4) 40%, rgba(10,19,68,0.68) 75%, rgba(10,19,68,0.82) 100%),
+    url('assets/hero-city.png') center/cover no-repeat;
+  color:var(--cream);
+  padding:64px 80px 64px 80px;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+@media (max-width:900px){.quote-hero{padding:60px 24px 72px}}
+.quote-hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,0.03) 40px,rgba(255,255,255,0.03) 41px);
+  pointer-events:none;
+}
+.quote-hero::after{display:none}
+.quote-hero blockquote{margin:0 auto 0 0;position:relative;z-index:2}
+.quote-hero .eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--navy);opacity:0.6;
+  text-transform:uppercase;letter-spacing:0.15em;
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:40px;
+}
+.quote-hero .eyebrow::after{
+  content:"";flex:1;height:1px;background:rgba(15,26,92,0.25);max-width:180px;
+}
+.quote-hero blockquote{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:clamp(34px,6.2vw,128px);
+  line-height:0.98;letter-spacing:-0.035em;
+  color:var(--cream);
+  max-width:min(1320px,96%);
+  text-shadow:0 4px 40px rgba(15,26,92,0.5);
+}
+/* HERO CATEGORIES */
+.hero-cats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+  gap:clamp(24px,2.5vw,56px);
+  margin-top:clamp(48px,5vw,88px);
+  max-width:min(1320px,100%);
+  position:relative;z-index:2;
+}
+.hero-cat{
+  border-top:1px solid rgba(245,239,228,0.6);
+  padding-top:16px;
+  min-width:0;
+}
+.hero-cat h3{
+  font-family:'Inter Tight';font-weight:700;
+  font-size:clamp(22px,1.9vw,36px);
+  color:var(--cream);letter-spacing:-0.02em;margin-bottom:10px;
+  display:flex;align-items:center;gap:9px;
+  text-shadow:0 2px 12px rgba(10,19,68,0.55);
+}
+.hero-cat h3::before{
+  content:"";
+  width:8px;height:8px;border-radius:50%;
+  background:var(--pink);flex-shrink:0;
+}
+.hero-cat p{
+  font-family:'Inter';font-weight:400;
+  font-size:clamp(15px,1.05vw,20px);line-height:1.6;
+  color:var(--cream);
+  text-shadow:0 1px 10px rgba(10,19,68,0.5);
+}
+@media (max-width:700px){
+  .hero-cats{gap:18px;margin-top:40px}
+}
+.quote-hero blockquote .pink{color:var(--pink)}
+.quote-hero blockquote .outline{
+  -webkit-text-stroke:2px var(--cream);
+  color:transparent;font-style:italic;
+}
+.quote-hero blockquote .swoosh{
+  display:inline-block;position:relative;
+}
+.quote-hero blockquote .swoosh::after{
+  content:"";position:absolute;
+  left:-4%;right:-4%;bottom:10%;height:22%;
+  background:var(--pink);border-radius:100px;z-index:-1;
+  transform:rotate(-1.5deg);
+}
+.quote-hero .attribution{
+  margin-top:48px;
+  padding-top:24px;
+  border-top:1px solid rgba(15,26,92,0.2);
+  max-width:480px;
+  display:flex;flex-direction:column;gap:4px;
+}
+.quote-hero .attribution .name{
+  font-family:'Inter Tight';font-weight:600;font-size:17px;
+  color:var(--navy);letter-spacing:-0.01em;
+}
+.quote-hero .attribution .role{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--navy);opacity:0.6;
+  text-transform:uppercase;letter-spacing:0.1em;
+}
+.quote-hero .scroll-cue{
+  position:absolute;bottom:40px;right:56px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--navy);opacity:0.6;
+  text-transform:uppercase;letter-spacing:0.2em;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+}
+@media (max-width:900px){
+  .quote-hero{padding:60px 24px 80px}
+  .quote-hero .scroll-cue{display:none}
+}
+
+/* FEATURED HERO CARD (kept further down page) */
+.featured{
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 70%, rgba(255,122,182,0.55), transparent 70%),
+    linear-gradient(180deg, #E8B7D8 0%, #C9A0C9 50%, #7A6AA8 100%);
+  padding:60px 40px;
+  min-height:70vh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.featured::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(255,255,255,0.04) 24px,rgba(255,255,255,0.04) 25px);
+}
+.featured-card{
+  background:var(--cream);
+  padding:20px;
+  border-radius:4px;
+  box-shadow:0 20px 60px rgba(10,19,68,0.25);
+  max-width:440px;
+  width:100%;
+  position:relative;z-index:2;
+  transform:rotate(-1deg);
+  transition:transform .4s;
+}
+.featured-card:hover{transform:rotate(0deg) scale(1.02)}
+.featured-thumb{
+  aspect-ratio:3/4;
+  background:
+    linear-gradient(180deg, rgba(15,26,92,0.1), rgba(15,26,92,0.4)),
+    repeating-linear-gradient(45deg, #B89FD4, #B89FD4 20px, #A88FC4 20px, #A88FC4 40px);
+  border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.6);
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  text-transform:uppercase;letter-spacing:0.12em;
+  position:relative;
+  margin-bottom:20px;
+}
+.featured-info{
+  text-align:center;padding:12px 16px 20px;
+}
+.featured-info .eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--navy);opacity:0.6;
+  text-transform:uppercase;letter-spacing:0.15em;
+  display:block;margin-bottom:10px;
+}
+.featured-info h2{
+  font-family:'Inter Tight';font-weight:700;
+  font-size:22px;line-height:1.2;
+  color:var(--navy);letter-spacing:-0.015em;
+}
+@media (max-width:900px){.featured{padding:40px 20px;min-height:60vh}}
+
+/* STORIES GRID */
+.stories{
+  background:var(--pink);
+  padding:80px 40px;
+}
+.stories h2,.itinerary h2{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:clamp(36px,4.6vw,64px);
+  text-align:center;color:var(--navy);
+  letter-spacing:-0.035em;line-height:0.98;
+  margin-bottom:48px;
+}
+.stories h2 .pink,.itinerary h2 .pink{color:var(--cream)}
+.section-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  display:block;text-align:center;margin-bottom:16px;
+}
+.itinerary .section-eyebrow,.stories .section-eyebrow{color:var(--navy);opacity:0.65}
+.outro .section-eyebrow{color:var(--pink);opacity:1}
+.stories-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:24px;
+  max-width:720px;margin:0 auto;
+}
+.story-card{
+  cursor:pointer;
+  transition:transform .3s;
+}
+.story-card:hover{transform:translateY(-4px)}
+.story-thumb{
+  aspect-ratio:4/3;
+  border-radius:4px;
+  margin-bottom:16px;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(255,255,255,0.6);
+  text-transform:uppercase;letter-spacing:0.12em;
+}
+.story-thumb::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent,transparent 18px,rgba(255,255,255,0.06) 18px,rgba(255,255,255,0.06) 19px);
+}
+.story-thumb.t1{background:linear-gradient(135deg,#6B5D4F,#3E3528)}
+.story-thumb.t2{background:linear-gradient(135deg,#C9966B,#8B5A3C)}
+.story-thumb.t3{background:linear-gradient(135deg,#D4A574,#8B6C4F)}
+.story-thumb.t4{background:linear-gradient(135deg,#7A9B5A,#4F6B3A)}
+.story-card .date{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--navy);opacity:0.6;
+  text-transform:uppercase;letter-spacing:0.1em;
+  display:block;margin-bottom:6px;
+}
+.story-card h3{
+  font-family:'Inter Tight';font-weight:600;
+  font-size:17px;line-height:1.3;
+  color:var(--navy);letter-spacing:-0.01em;
+}
+.stories-cta{
+  display:block;text-align:center;margin-top:40px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--navy);text-decoration:underline;
+  text-transform:uppercase;letter-spacing:0.12em;
+}
+@media (max-width:600px){.stories{padding:60px 20px}}
+
+/* ITINERARY / UPCOMING */
+.itinerary{
+  background:var(--pink);
+  padding:80px 60px 80px 80px;
+  color:var(--navy);
+}
+.itinerary h2{color:var(--navy)}
+.itinerary-list{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  max-width:100%;
+  align-items:stretch;
+}
+.itin-row{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding:28px 20px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(15,26,92,0.12);
+  transition:background .2s;
+}
+.itin-row:hover{background:rgba(255,255,255,0.32)}
+.itin-num{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:58px;line-height:1;
+  color:var(--navy);letter-spacing:-0.03em;
+}
+.itin-body h4{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:clamp(14px,1.3vw,18px);
+  letter-spacing:-0.02em;line-height:1.05;
+  margin-bottom:20px;
+  display:flex;align-items:center;justify-content:center;
+  gap:5px;
+  flex-wrap:nowrap;
+  width:100%;
+}
+.itin-body h4 .from{
+  color:var(--navy);opacity:0.65;
+}
+.itin-body h4 .arrow{
+  color:var(--navy);font-weight:800;
+  font-size:1em;line-height:1;
+}
+.itin-body h4 .to{
+  background:#5BC23A;color:var(--navy);
+  padding:3px 12px;border-radius:10px;
+  white-space:nowrap;
+}
+.itinerary .itin-body{min-width:0;flex:1;display:flex;flex-direction:column;}
+.itin-body .dates{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--navy);opacity:0.7;
+  text-transform:uppercase;letter-spacing:0.08em;
+  display:block;margin-bottom:4px;
+}
+.itin-body .desc{
+  font-family:'Inter Tight';font-weight:600;font-size:16px;
+  color:var(--navy);opacity:1;line-height:1.4;
+  margin-bottom:16px;
+  min-height:4.5em;
+  text-align:center;
+  display:flex;align-items:center;justify-content:center;
+}
+.itin-quotes{
+  list-style:none;
+  display:flex;flex-direction:column;gap:12px;
+  padding-top:16px;
+}
+.itin-quotes li{
+  position:relative;
+  font-family:'Inter';font-size:14px;font-style:italic;
+  color:var(--navy);line-height:1.5;
+  background:#ffffff;
+  border-radius:10px;
+  padding:12px 16px 12px 42px;
+  box-shadow:0 2px 8px rgba(15,26,92,0.08);
+}
+.itin-quotes li::before{
+  content:'\201C';
+  position:absolute;left:10px;top:4px;
+  font-family:'Inter Tight';font-weight:800;font-size:28px;
+  line-height:1;
+}
+.itin-quotes li::after{
+  content:'\201D';
+  font-family:'Inter Tight';font-weight:800;font-size:28px;
+  line-height:1;
+  vertical-align:bottom;
+  margin-left:2px;
+}
+/* Row 1 (Problem) — navy accent */
+.itin-row:nth-child(1) .itin-quotes li{border-left:3px solid var(--navy);background:#ffffff}
+.itin-row:nth-child(1) .itin-quotes li::before{color:var(--navy)}
+.itin-row:nth-child(1) .itin-quotes li::after{color:var(--navy)}
+/* Row 2 (Wish) — white bg, light pink accent */
+.itin-row:nth-child(2) .itin-quotes li{border-left:4px solid #FFB6D6;background:#ffffff}
+.itin-row:nth-child(2) .itin-quotes li::before{color:#FFB6D6}
+.itin-row:nth-child(2) .itin-quotes li::after{color:#FFB6D6}
+/* Row 3 (Collaboration) — green accent */
+.itin-row:nth-child(3) .itin-quotes li{border-left:3px solid #5BC23A;background:#ffffff}
+.itin-row:nth-child(3) .itin-quotes li::before{color:#5BC23A}
+.itin-row:nth-child(3) .itin-quotes li::after{color:#5BC23A}
+.itin-img{
+  border-radius:999px;
+  width:72px;height:72px;
+  flex-shrink:0;
+  align-self:center;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  transition:transform .3s;
+  margin-bottom:4px;
+}
+.itin-row:hover .itin-img{transform:scale(1.05) rotate(-4deg)}
+.itin-img svg{width:60%;height:60%;display:block}
+.itin-img.i1{background:var(--navy)}
+.itin-img.i2{background:var(--cream)}
+.itin-img.i3{background:var(--navy)}
+.itin-img.i4{background:var(--navy)}
+@media (max-width:700px){
+  .itin-row{gap:14px;padding:20px 16px}
+  .itinerary-list{grid-template-columns:1fr}
+  .itin-num{font-size:38px}
+  .itin-body h4{font-size:clamp(17px,5vw,24px);gap:7px}
+  .itin-body h4 .to{padding:2px 10px}
+  .itinerary{padding:60px 20px}
+}
+
+/* ABOUT US */
+.about-us{
+  background:var(--navy);
+  color:var(--cream);
+  padding:120px 80px;
+}
+.about-inner{
+  max-width:1080px;margin:0 auto;
+  display:grid;grid-template-columns:1.25fr 1fr;
+  gap:64px;align-items:center;
+}
+.about-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--pink);letter-spacing:0.1em;text-transform:uppercase;
+  display:block;margin-bottom:24px;
+}
+.about-us h2{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:clamp(36px,4.6vw,64px);
+  line-height:0.98;letter-spacing:-0.035em;
+  color:var(--cream);margin-bottom:28px;
+}
+.about-us h2 .pink{color:var(--pink)}
+.about-us p{
+  font-family:'Inter Tight';font-weight:500;
+  font-size:clamp(16px,1.5vw,19px);
+  line-height:1.5;letter-spacing:-0.01em;
+  color:rgba(245,239,228,0.82);
+  max-width:480px;margin-bottom:18px;
+}
+.about-meta{
+  display:flex;gap:40px;flex-wrap:wrap;
+  margin-top:36px;padding-top:28px;
+  border-top:1px solid rgba(245,239,228,0.2);
+}
+.about-stat{display:flex;flex-direction:column;gap:4px}
+.about-stat .n{
+  font-family:'Inter Tight';font-weight:800;font-size:30px;
+  color:var(--cream);letter-spacing:-0.03em;line-height:1;
+}
+.about-stat .l{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(245,239,228,0.6);
+  text-transform:uppercase;letter-spacing:0.08em;
+}
+.about-photo{
+  aspect-ratio:4/5;
+  border-radius:12px;
+  overflow:hidden;
+  background:linear-gradient(160deg, #2a3a8a, #0a1344);
+  border:1px solid rgba(245,239,228,0.15);
+}
+.about-photo img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+@media (max-width:800px){
+  .about-us{padding:80px 24px}
+  .about-inner{grid-template-columns:1fr;gap:40px}
+  .about-photo{max-width:340px}
+}
+
+/* WAVE DIVIDER */
+.wave{
+  display:block;width:100%;height:60px;
+  background:var(--pink);
+  position:relative;
+}
+.wave svg{display:block;width:100%;height:100%}
+
+/* OUTRO */
+.outro{
+  background:var(--cream);
+  padding:80px 40px 60px;
+  text-align:center;
+}
+.outro .eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--navy);opacity:0.6;
+  text-transform:uppercase;letter-spacing:0.15em;
+  display:block;margin-bottom:16px;
+}
+.outro-title{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:clamp(44px,6vw,84px);
+  color:var(--navy);letter-spacing:-0.035em;
+  line-height:0.95;
+  margin-bottom:40px;
+}
+.outro-title .pink{color:var(--pink)}
+.outro-email{
+  display:inline-block;
+  font-family:'Inter Tight';font-weight:600;font-size:22px;
+  color:var(--navy);text-decoration:none;
+  border-bottom:2px solid var(--pink);
+  padding-bottom:2px;
+  margin-bottom:40px;
+  transition:color .2s;
+}
+.outro-email:hover{color:var(--pink)}
+
+/* CONTACT FORM */
+.contact-form{
+  max-width:520px;
+  margin:8px auto 56px;
+  text-align:left;
+  display:flex;flex-direction:column;gap:22px;
+}
+.form-row{display:flex;flex-direction:column;gap:8px}
+.form-row label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--navy);opacity:0.7;
+}
+.contact-form input[type=text],
+.contact-form input[type=email],
+.contact-form input[type=tel],
+.contact-form textarea{
+  font-family:'Inter Tight';font-weight:500;font-size:16px;
+  color:var(--navy);
+  background:#fff;
+  border:1.5px solid rgba(15,26,92,0.18);
+  border-radius:10px;
+  padding:14px 16px;
+  width:100%;
+  transition:border-color .2s;
+  resize:vertical;
+}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(15,26,92,0.4)}
+.contact-form input:focus,.contact-form textarea:focus{
+  outline:none;border-color:var(--pink);
+}
+.contact-form textarea{min-height:110px;line-height:1.4}
+.radio-group{display:flex;gap:10px;flex-wrap:wrap}
+.radio-pill input{position:absolute;opacity:0;width:0;height:0}
+.radio-pill span{
+  display:block;
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.08em;
+  padding:11px 20px;border-radius:999px;
+  border:1.5px solid rgba(15,26,92,0.2);
+  color:var(--navy);
+  transition:background .2s,color .2s,border-color .2s;
+  cursor:pointer;
+}
+.radio-pill input:checked + span{
+  background:var(--navy);color:var(--cream);border-color:var(--navy);
+}
+.radio-pill input:focus-visible + span{border-color:var(--pink)}
+.conditional{display:none}
+.conditional.show{display:flex}
+.field-hint{
+  font-family:'Inter';font-size:12px;color:var(--navy);opacity:0.55;line-height:1.4;
+}
+.form-submit{
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.1em;
+  background:var(--pink);color:var(--navy);
+  border:none;border-radius:999px;
+  padding:16px 32px;cursor:pointer;
+  transition:transform .2s;
+  align-self:flex-start;
+}
+.form-submit:hover{transform:translateY(-2px)}
+.form-note{
+  font-family:'Inter';font-size:13px;color:var(--navy);opacity:0.6;line-height:1.5;
+}
+.form-success{
+  display:none;
+  background:var(--green);color:var(--navy);
+  border-radius:10px;padding:16px 20px;
+  font-family:'Inter Tight';font-weight:600;font-size:15px;
+}
+.form-success.show{display:block}
+.outro-links{
+  display:flex;justify-content:center;gap:28px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  text-transform:uppercase;letter-spacing:0.12em;
+  margin-bottom:24px;
+}
+.outro-links a{color:var(--navy);text-decoration:none;opacity:0.8;transition:opacity .2s}
+.outro-links a:hover{opacity:1}
+.outro-social{
+  display:flex;justify-content:center;gap:18px;
+  margin-bottom:24px;
+  font-size:18px;color:var(--navy);
+}
+.outro-social a{color:inherit;text-decoration:none;opacity:0.7;transition:opacity .2s}
+.outro-social a:hover{opacity:1}
+.outro-copyright{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--navy);opacity:0.5;
+  text-transform:uppercase;letter-spacing:0.1em;
+}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="divider-stroke" aria-hidden="true"></div>
+
+  <!-- SPLIT TABS (straddle the blue/cream divider) -->
+  <nav class="split-tabs" style="font-family: system-ui; font-weight: 400; width: 108px">
+    <a href="#top" class="active" style="font-family: monospace; font-size: 10px; width: 30px">CSM</a>
+    <a href="#about" style="font-size: 10px; width: 30px">Services</a>
+    <a href="#aboutus" style="font-size: 10px; width: 30px">About Us</a>
+    <a href="#stories" style="font-size: 10px; width: 30px">Projects</a>
+    <a href="#contact" style="font-size: 10px; width: 30px">Contact</a>
+  </nav>
+
+  <!-- STATIC LEFT -->
+  <aside class="sidebar" data-screen-label="sidebar" style="color: rgb(15, 26, 92)">
+
+    <!-- TOP: logo + wordmark -->
+    <div class="sidebar-top">
+      <img src="assets/logo-csm-v2.png" alt="MARA" class="sidebar-logo" />
+      <div class="sidebar-wordmark">
+        Concept Studio MARA
+      </div>
+    </div>
+
+    <!-- MIDDLE: contact -->
+    <div class="sidebar-contact">
+      <div class="contact-item">
+        <span class="label">Email</span>
+        <span class="val"><a href="mailto:conceptstudio@mara.com">conceptstudio@mara.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Located</span>
+        <span class="val">Rotterdam, NL</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Availability</span>
+        <span class="val">Booking new projects — Q3 2026</span>
+      </div>
+
+      <a href="#contact" class="sidebar-cta" id="bookCta">
+        <span>BOOK APPOINTMENT</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <!-- BOTTOM: socials + status -->
+    <div class="sidebar-bottom">
+      <div class="sidebar-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Pinterest">Pi</a>
+        <a href="#" aria-label="Email">@</a>
+      </div>
+    </div>
+
+    <!-- SIDEBAR MARQUEE (slow right-to-left) -->
+    <div class="sidebar-marquee" aria-hidden="true">
+      <div class="sidebar-marquee-track">
+        <span>Concepts</span><span class="star">✦</span>
+        <span>Knowledge</span><span class="star">✦</span>
+        <span>Ideas</span><span class="star">✦</span>
+        <span>Campaigns</span><span class="star">✦</span>
+        <span>Workshops</span><span class="star">✦</span>
+        <span>Concepts</span><span class="star">✦</span>
+        <span>Knowledge</span><span class="star">✦</span>
+        <span>Ideas</span><span class="star">✦</span>
+        <span>Campaigns</span><span class="star">✦</span>
+        <span>Workshops</span><span class="star">✦</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- SCROLLING RIGHT -->
+  <main class="content" id="top">
+
+    <!-- QUOTE HERO -->
+    <section class="quote-hero" data-screen-label="quote">
+      <blockquote>
+        We build<br/>
+        what brands<br/>
+        have <span class="outline">not</span> thought<br/>
+        of <span class="swoosh">yet<span class="pink">.</span></span>
+      </blockquote>
+      <div class="hero-cats">
+        <div class="hero-cat">
+          <h3>Problem</h3>
+          <p>You're stuck, or not moving fast enough. We dig out the real problem hiding under the obvious one.</p>
+        </div>
+        <div class="hero-cat">
+          <h3>Wish</h3>
+          <p>You know where you want to be. We build the concept that actually gets you there.</p>
+        </div>
+        <div class="hero-cat">
+          <h3>Collaboration</h3>
+          <p>Hand us a brief or hand us nothing. Either way, we make it  together.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITINERARY -->
+    <section class="itinerary" id="about" data-screen-label="itinerary">
+      <span class="section-eyebrow">(Services)</span>
+      <h2 class="reveal">Which one sounds <span class="pink">familiar?</span></h2>
+      <div class="itinerary-list">
+        <div class="itin-row reveal">
+          <div class="itin-img i1" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 1 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/>
+            </svg>
+          </div>
+          <div class="itin-body">
+            <h4><span class="from">Problem</span><span class="arrow">&rarr;</span><span class="to">Solution</span></h4>
+            <p class="desc">You bring the challenge or issue.</p>
+            <ul class="itin-quotes">
+              <li>Product X is not selling as well as expected.</li>
+              <li>Expansion of the product offer is necessary &amp; I do not know where to start.</li>
+              <li>Target audience has troubles finding the products.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="itin-row reveal">
+          <div class="itin-img i3" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/>
+              <path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/>
+              <path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/>
+            </svg>
+          </div>
+          <div class="itin-body">
+            <h4><span class="from">Wish</span><span class="arrow">&rarr;</span><span class="to">Ideas</span></h4>
+            <p class="desc">You have an idea about where you want to be.</p>
+            <ul class="itin-quotes">
+              <li>We want to broaden our reach and appeal to a new audience.</li>
+              <li>We would like to increase support &amp; engagement between different teams.</li>
+              <li>We would like to jump on trend or event X, as it will create more engagement.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="itin-row reveal">
+          <div class="itin-img i4" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="24" cy="32" r="14" fill="#FF7AB6" opacity="0.9"/>
+              <circle cx="40" cy="32" r="14" fill="#0F1A5C" opacity="0.9"/>
+              <path d="M32 20 a14 14 0 0 1 0 24 a14 14 0 0 1 0 -24 z" fill="#5BC23A" opacity="0.95"/>
+            </svg>
+          </div>
+          <div class="itin-body">
+            <h4><span class="from">Collaboration</span><span class="arrow">&rarr;</span><span class="to">Co-Creation</span></h4>
+            <p class="desc">You have a direction &amp; want a partner to shape the idea with you.</p>
+            <ul class="itin-quotes">
+              <li>Our team seems to be stuck &amp; we do not know what to do about it.</li>
+              <li>We have several ideas, but we do not know how to present it to BOM/stakeholders.</li>
+              <li>Our teams are not fully on board with the direction we're taking.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="about-us" id="aboutus" data-screen-label="aboutus">
+      <div class="about-inner">
+        <div class="about-text">
+          <span class="about-eyebrow">(About us)</span>
+          <h2 class="reveal">A small studio<br/>with <span class="pink">big ideas.</span></h2>
+          <p class="reveal">Concept Studio MARA is a Rotterdam studio built on one belief: most brands don't need more noise &mdash; they need a sharper idea, fully formed and ready to move.</p>
+          <p class="reveal">We work where strategy meets craft, turning vague briefs (or no brief at all) into concepts you can actually launch. Concepts, knowledge and ideas &mdash; whichever gets the job done.</p>
+          <div class="about-meta reveal">
+            <div class="about-stat"><span class="n">2025</span><span class="l">Founded</span></div>
+            <div class="about-stat"><span class="n">RTM</span><span class="l">Rotterdam, NL</span></div>
+            <div class="about-stat"><span class="n">3</span><span class="l">Ways to work</span></div>
+          </div>
+        </div>
+        <div class="about-photo reveal"><img src="assets/about-mara.jpg" alt="Concept Studio MARA" /></div>
+      </div>
+    </section>
+
+    <!-- STORIES -->
+    <section class="stories" id="stories" data-screen-label="stories">
+      <span class="section-eyebrow">(Projects)</span>
+      <h2 class="reveal">Selected <span class="pink">projects.</span></h2>
+      <div class="stories-grid">
+        <div class="story-card reveal">
+          <div class="story-thumb t1">[ project image 01 ]</div>
+          <span class="date">October 10, 2025</span>
+          <h3>— Project title goes here, concept-led campaign</h3>
+        </div>
+        <div class="story-card reveal">
+          <div class="story-thumb t2">[ project image 02 ]</div>
+          <span class="date">October 2, 2025</span>
+          <h3>— Another project title, product launch</h3>
+        </div>
+        <div class="story-card reveal">
+          <div class="story-thumb t3">[ project image 03 ]</div>
+          <span class="date">September 17, 2025</span>
+          <h3>— Workshop series, dangerous teams</h3>
+        </div>
+        <div class="story-card reveal">
+          <div class="story-thumb t4">[ project image 04 ]</div>
+          <span class="date">September 2, 2025</span>
+          <h3>— Brand identity, ground-up rebuild</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAVE DIVIDER -->
+    <div class="wave">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,60 L0,30 Q150,0 300,30 T600,30 T900,30 T1200,30 L1200,60 Z" fill="#F5EFE4"/>
+      </svg>
+    </div>
+
+    <!-- OUTRO -->
+    <section class="outro" id="contact" data-screen-label="outro">
+      <span class="section-eyebrow">(Contact)</span>
+      <h2 class="outro-title">Less talk.<br/><span class="pink">More concept.</span></h2>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <label>What would you like to do?</label>
+          <div class="radio-group">
+            <label class="radio-pill"><input type="radio" name="intent" value="message" checked /><span>Just send a message</span></label>
+            <label class="radio-pill"><input type="radio" name="intent" value="appointment" /><span>Book an appointment</span></label>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="cf-name">Name or business</label>
+          <input type="text" id="cf-name" name="name" placeholder="Your name or company" required />
+        </div>
+        <div class="form-row">
+          <label for="cf-msg">Your problem, wish or collaboration</label>
+          <textarea id="cf-msg" name="message" placeholder="Tell us in a few lines what you're after…" required></textarea>
+        </div>
+        <div class="form-row">
+          <label>How should we keep in touch?</label>
+          <div class="radio-group">
+            <label class="radio-pill"><input type="radio" name="contact-method" value="email" checked /><span>Email</span></label>
+            <label class="radio-pill"><input type="radio" name="contact-method" value="phone" /><span>Phone</span></label>
+            <label class="radio-pill"><input type="radio" name="contact-method" value="both" /><span>Both</span></label>
+          </div>
+        </div>
+        <div class="form-row conditional show" id="field-email">
+          <label for="cf-email">Email address</label>
+          <input type="email" id="cf-email" name="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-row conditional" id="field-phone">
+          <label for="cf-phone">Phone number</label>
+          <input type="tel" id="cf-phone" name="phone" placeholder="+31 …" />
+        </div>
+        <div class="form-row conditional" id="field-when">
+          <label for="cf-when">Preferred date &amp; time</label>
+          <input type="text" id="cf-when" name="when" placeholder="e.g. week of 14 July, mornings" />
+          <span class="field-hint">We'll confirm a slot by email. (Online calendar booking coming soon.)</span>
+        </div>
+        <button type="submit" class="form-submit">Send</button>
+        <div class="form-success" id="formSuccess">Thanks — your message is ready in your mail app. Hit send and we'll be in touch.</div>
+      </form>
+      <div class="outro-links">
+        <a href="#top">Home</a>
+        <a href="#about">Services</a>
+        <a href="#aboutus">About Us</a>
+        <a href="#stories">Projects</a>
+        <a href="mailto:ConceptStudio@Mara.com">Contact</a>
+      </div>
+      <div class="outro-social">
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Pinterest">⬤</a>
+        <a href="#" aria-label="X">✕</a>
+      </div>
+      <span class="outro-copyright">© 2026 — Concept Studio MARA — Rotterdam</span>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Contact form: conditional fields + submit
+const cform = document.getElementById('contactForm');
+if(cform){
+  const fEmail = document.getElementById('field-email');
+  const fPhone = document.getElementById('field-phone');
+  const fWhen = document.getElementById('field-when');
+  const inEmail = document.getElementById('cf-email');
+  const inPhone = document.getElementById('cf-phone');
+  const inWhen = document.getElementById('cf-when');
+  function method(){return cform.querySelector('input[name="contact-method"]:checked').value}
+  function intent(){return cform.querySelector('input[name="intent"]:checked').value}
+  function updateFields(){
+    const v = method();
+    const showE = v==='email'||v==='both';
+    const showP = v==='phone'||v==='both';
+    fEmail.classList.toggle('show', showE);
+    fPhone.classList.toggle('show', showP);
+    inEmail.required = showE;
+    inPhone.required = showP;
+    const booking = intent()==='appointment';
+    fWhen.classList.toggle('show', booking);
+  }
+  cform.querySelectorAll('input[name="contact-method"],input[name="intent"]').forEach(r=>r.addEventListener('change', updateFields));
+  updateFields();
+
+  cform.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    if(!cform.reportValidity()) return;
+    const name = document.getElementById('cf-name').value.trim();
+    const msg = document.getElementById('cf-msg').value.trim();
+    const v = method();
+    const isBooking = intent()==='appointment';
+    let body = 'Request type: '+(isBooking?'Appointment booking':'Message')+'\n\nName / business: '+name+'\n\nProblem / wish / collaboration:\n'+msg+'\n\nPreferred contact: '+v;
+    if(v==='email'||v==='both') body += '\nEmail: '+inEmail.value.trim();
+    if(v==='phone'||v==='both') body += '\nPhone: '+inPhone.value.trim();
+    if(isBooking) body += '\nPreferred date/time: '+inWhen.value.trim();
+    const subject = (isBooking?'Appointment request from ':'New enquiry from ')+(name||'website');
+    window.location.href = 'mailto:ConceptStudio@Mara.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  // Sidebar CTA pre-selects the appointment option
+  const bookCta = document.getElementById('bookCta');
+  if(bookCta){
+    bookCta.addEventListener('click',()=>{
+      const appt = cform.querySelector('input[name="intent"][value="appointment"]');
+      if(appt){appt.checked = true; updateFields();}
+    });
+  }
+}
+
+// Sidebar nav active state (click)
+const navLinks = document.querySelectorAll('.split-tabs a');
+function setActive(id){
+  navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
+}
+navLinks.forEach(a=>{
+  a.addEventListener('click',()=>{
+    setActive(a.getAttribute('href').slice(1));
+  });
+});
+
+// Scroll-spy: update active tab as you scroll
+const spySections = [
+  {el:document.querySelector('.quote-hero'), id:'top'},
+  {el:document.getElementById('about'), id:'about'},
+  {el:document.getElementById('aboutus'), id:'aboutus'},
+  {el:document.getElementById('stories'), id:'stories'},
+  {el:document.getElementById('contact'), id:'contact'},
+].filter(s=>s.el);
+function onScrollSpy(){
+  const line = window.innerHeight * 0.4;
+  let current = spySections[0].id;
+  for(const s of spySections){
+    if(s.el.getBoundingClientRect().top <= line) current = s.id;
+  }
+  setActive(current);
+}
+window.addEventListener('scroll', onScrollSpy, {passive:true});
+window.addEventListener('resize', onScrollSpy, {passive:true});
+onScrollSpy();
+</script>
+</body>
+</html>
