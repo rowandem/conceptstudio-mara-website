@@ -72,6 +72,33 @@ body{
 }
 @media (max-width:900px){.divider-stroke{display:none}}
 
+/* MOBILE BRAND HEADER (above nav, not sticky) */
+.mobile-brand{display:none}
+@media (max-width:900px){
+  .mobile-brand{
+    display:flex;
+    align-items:center;justify-content:center;
+    gap:2px;
+    padding:10px 16px;
+    background:var(--sky);
+    position:relative;
+  }
+  .mobile-brand::after{
+    content:"";
+    position:absolute;
+    bottom:0;left:50%;transform:translateX(-50%);
+    width:60%;height:1px;
+    background:var(--navy);
+  }
+  .mobile-brand img{width:40px;height:40px;transform:translateY(-2px)}
+  .mobile-brand{width:100%;box-sizing:border-box}
+  .mobile-brand span{
+    font-family:'Inter Tight';font-weight:800;
+    font-size:17px;letter-spacing:-0.02em;
+    color:var(--navy);
+  }
+}
+
 /* SPLIT TABS — horizontal nav pills straddling the blue/cream divider */
 .split-tabs{
   position:fixed;
@@ -133,6 +160,14 @@ body{
     border:none;margin-left:0;
     width:auto !important;
     background:var(--navy);color:var(--sky);
+  }
+}
+@media (max-width:480px){
+  .split-tabs{gap:6px !important;padding:10px 8px}
+  .split-tabs a{
+    font-size:10px !important;
+    padding:7px 9px;
+    letter-spacing:0.06em;
   }
 }
 
@@ -243,15 +278,13 @@ body{
   font-family:'JetBrains Mono',monospace;font-size:12px;
   text-transform:uppercase;letter-spacing:0.1em;
   color:var(--cream);background:var(--navy);
-  padding:15px 22px;border-radius:10px;
+  padding:15px 22px;border-radius:999px;
   text-decoration:none;
   transition:background .2s,color .2s,transform .2s;
 }
 .sidebar-cta:hover{
   background:var(--pink);color:var(--navy);transform:translateY(-2px);
 }
-.sidebar-cta .arrow{transition:transform .2s}
-.sidebar-cta:hover .arrow{transform:translateX(4px)}
 .contact-item{
   display:flex;flex-direction:column;gap:2px;
 }
@@ -315,37 +348,6 @@ body{
   min-width:0;
 }
 
-/* Mobile floating logo on hero */
-.hero-logo-mobile,.hero-brand-mobile{
-  display:none;
-}
-@media (max-width:900px){
-  .hero-brand-mobile{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:0px;
-    position:absolute;
-    top:46px;right:24px;
-    z-index:3;
-  }
-  .hero-logo-mobile{
-    display:block;
-    width:130px;height:130px;
-    animation:float-sb 7s ease-in-out infinite;
-    filter:drop-shadow(0 6px 16px rgba(10,19,68,0.4));
-  }
-  .hero-brand-mobile .brand-title{
-    font-family:'Inter Tight';font-weight:800;
-    font-size:13px;letter-spacing:0.01em;
-    margin-top:-14px;
-    text-transform:uppercase;
-    text-align:center;
-    color:var(--cream);
-    text-shadow:0 2px 12px rgba(10,19,68,0.6);
-  }
-}
-
 /* QUOTE HERO (big & bold) */
 .quote-hero{
   background:
@@ -359,6 +361,9 @@ body{
   overflow:hidden;
 }
 @media (max-width:900px){.quote-hero{padding:48px 24px 56px}}
+@media (max-width:700px){
+  .quote-hero blockquote .br-desktop{display:none}
+}
 .quote-hero::before{
   content:"";position:absolute;inset:0;
   background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,0.03) 40px,rgba(255,255,255,0.03) 41px);
@@ -876,7 +881,10 @@ body{
   cursor:pointer;
 }
 .radio-pill input:checked + span{
-  background:var(--navy);color:var(--cream);border-color:var(--navy);
+  background:var(--navy-deep);color:var(--cream);border-color:var(--navy-deep);
+}
+.radio-pill input:not(:checked) + span:hover{
+  background:rgba(15,26,92,0.08);border-color:rgba(15,26,92,0.45);
 }
 .radio-pill input:focus-visible + span{border-color:var(--pink)}
 .conditional{display:none}
@@ -935,6 +943,12 @@ body{
 
   <div class="divider-stroke" aria-hidden="true"></div>
 
+  <!-- MOBILE BRAND HEADER -->
+  <header class="mobile-brand">
+    <img src="assets/logo-csm-v2.png" alt="CSM logo" />
+    <span>Concept Studio MARA</span>
+  </header>
+
   <!-- SPLIT TABS (straddle the blue/cream divider) -->
   <nav class="split-tabs" style="font-family: system-ui; font-weight: 400; width: 108px; gap: 4px">
     <a href="#top" class="active" style="font-family: monospace; font-size: 10px; width: 30px">CSM</a>
@@ -972,7 +986,6 @@ body{
 
       <a href="#contact" class="sidebar-cta" id="bookCta">
         <span>BOOK APPOINTMENT</span>
-        <span class="arrow">→</span>
       </a>
     </div>
 
@@ -1017,14 +1030,10 @@ body{
 
     <!-- QUOTE HERO -->
     <section class="quote-hero" data-screen-label="quote">
-      <div class="hero-brand-mobile">
-        <img class="hero-logo-mobile" src="assets/logo-csm-v2.png" alt="CSM logo" />
-        <span class="brand-title" style="color: #AFFF57">Concept Studio MARA</span>
-      </div>
       <blockquote>
-        We build<br/>
+        We build<br class="br-desktop"/>
         what brands<br/>
-        have <span class="outline">not</span> thought<br/>
+        have <span class="outline">not</span> thought<br class="br-desktop"/>
         of <span class="swoosh">yet<span class="pink">.</span></span>
       </blockquote>
       <div class="hero-cats">
