@@ -657,6 +657,15 @@ body{
   text-transform:uppercase;letter-spacing:0.08em;
   display:block;margin-bottom:4px;
 }
+.itin-title{
+  font-family:'Inter Tight';font-weight:800;
+  font-size:clamp(17px,1.6vw,21px);
+  letter-spacing:-0.02em;line-height:1.2;
+  color:var(--navy);text-align:center;
+  margin-bottom:18px;
+  min-height:2.6em;
+  display:flex;align-items:center;justify-content:center;
+}
 .itin-body .desc{
   font-family:'Inter Tight';font-weight:600;font-size:16px;
   color:var(--navy);opacity:1;line-height:1.4;
@@ -676,22 +685,21 @@ body{
   color:var(--navy);line-height:1.5;
   background:#ffffff;
   border-radius:10px;
-  padding:12px 16px 12px 42px;
+  padding:30px 22px 14px;
   box-shadow:0 2px 8px rgba(15,26,92,0.08);
   overflow-wrap:anywhere;
 }
 .itin-quotes li::before{
   content:'\201C';
-  position:absolute;left:10px;top:4px;
+  position:absolute;left:12px;top:6px;
   font-family:'Inter Tight';font-weight:800;font-size:28px;
   line-height:1;
 }
 .itin-quotes li::after{
   content:'\201D';
+  position:absolute;right:12px;top:6px;
   font-family:'Inter Tight';font-weight:800;font-size:28px;
   line-height:1;
-  vertical-align:bottom;
-  margin-left:2px;
 }
 /* Row 1 (Problem) — navy accent */
 .itin-row:nth-child(1) .itin-quotes li{border-left:3px solid var(--navy);background:#ffffff}
@@ -1080,6 +1088,7 @@ body{
       <h2 class="reveal">Which one sounds <span class="pink">familiar?</span></h2>
       <div class="itinerary-list">
         <div class="itin-row reveal">
+          <p class="itin-title">You bring the challenge or issue.</p>
           <div class="itin-img i1" aria-hidden="true">
             <svg viewBox="0 0 64 64">
               <path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 1 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/>
@@ -1087,7 +1096,6 @@ body{
           </div>
           <div class="itin-body">
             <h4><span class="from">Problem</span><span class="arrow">&rarr;</span><span class="to">Solution</span></h4>
-            <p class="desc">You bring the challenge or issue.</p>
             <ul class="itin-quotes">
               <li>Product X is not selling as well as expected.</li>
               <li>Expansion of the product offer is necessary &amp; I do not know where to start.</li>
@@ -1096,6 +1104,7 @@ body{
           </div>
         </div>
         <div class="itin-row reveal">
+          <p class="itin-title">You have an idea about where you want to be.</p>
           <div class="itin-img i3" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/>
@@ -1105,7 +1114,6 @@ body{
           </div>
           <div class="itin-body">
             <h4><span class="from">Wish</span><span class="arrow">&rarr;</span><span class="to">Ideas</span></h4>
-            <p class="desc">You have an idea about where you want to be.</p>
             <ul class="itin-quotes">
               <li>We want to broaden our reach and appeal to a new audience.</li>
               <li>We would like to increase support &amp; engagement between different teams.</li>
@@ -1114,6 +1122,7 @@ body{
           </div>
         </div>
         <div class="itin-row reveal">
+          <p class="itin-title">You have a direction and want a partner to shape it with.</p>
           <div class="itin-img i4" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none">
               <!-- person left (pink) -->
@@ -1126,7 +1135,6 @@ body{
           </div>
           <div class="itin-body">
             <h4><span class="from">Collaboration</span><span class="arrow">&rarr;</span><span class="to">Co-Creation</span></h4>
-            <p class="desc">You have a direction &amp; want a partner to shape the idea with you.</p>
             <ul class="itin-quotes">
               <li>Our team seems to be stuck &amp; we do not know what to do about it.</li>
               <li>We have several ideas, but we do not know how to present it to BOM/stakeholders.</li>
