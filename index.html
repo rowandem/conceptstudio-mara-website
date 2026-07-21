@@ -917,6 +917,23 @@ body{
   font-family:'Inter Tight';font-weight:600;font-size:15px;
 }
 .form-success.show{display:block}
+.form-error-msg{
+  display:none;
+  font-family:'Inter';font-size:12.5px;font-weight:500;
+  color:#C0263A;margin-top:6px;
+}
+.form-row.invalid .form-error-msg{display:block}
+.form-row.invalid input,.form-row.invalid textarea{
+  border-color:#C0263A;
+}
+.form-fail{
+  display:none;
+  background:#C0263A;color:#fff;
+  border-radius:10px;padding:14px 18px;
+  font-family:'Inter Tight';font-weight:600;font-size:14px;
+}
+.form-fail.show{display:block}
+.form-submit[aria-busy="true"]{opacity:0.6;pointer-events:none}
 .outro-links{
   display:flex;justify-content:center;gap:28px;
   font-family:'JetBrains Mono',monospace;font-size:11px;
@@ -1126,8 +1143,8 @@ body{
         <div class="about-text">
           <span class="about-eyebrow">(About us)</span>
           <h2 class="reveal">A small studio<br/>with <span class="pink">big ideas.</span></h2>
-          <p class="reveal">Concept Studio MARA is a Rotterdam studio built on one belief: most brands don't need more noise &mdash; they need a sharper idea, fully formed and ready to move.</p>
-          <p class="reveal">We work where strategy meets craft, turning vague briefs (or no brief at all) into concepts you can actually launch. Concepts, knowledge and ideas &mdash; whichever gets the job done.</p>
+          <p class="reveal">Concept Studio MARA is a Rotterdam based studio for creative concept development, experience design &amp; brand innovation. We believe strong concepts start with the right questions. Whether you bring a challenge, a wish or a co-creation opportunity, we turn it into something meaningful.</p>
+          <p class="reveal">Let’s begin strong: a good conversation with a coffee that matches the energy!</p>
           <div class="about-meta reveal">
             <div class="about-stat"><span class="n">2025</span><span class="l">Founded</span></div>
             <div class="about-stat"><span class="n">RTM</span><span class="l">Rotterdam, NL</span></div>
@@ -1178,7 +1195,7 @@ body{
       <span class="section-eyebrow">(Contact)</span>
       <h2 class="outro-title">Less talk.<br/><span class="pink">More concept.</span></h2>
 
-      <form class="contact-form" id="contactForm" novalidate>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xdaqdkkj" method="POST" novalidate>
         <div class="form-row">
           <label>What would you like to do?</label>
           <div class="radio-group">
@@ -1189,10 +1206,12 @@ body{
         <div class="form-row">
           <label for="cf-name">Name or business</label>
           <input type="text" id="cf-name" name="name" placeholder="Your name or company" required />
+          <span class="form-error-msg" data-for="cf-name">Please enter your name or business.</span>
         </div>
         <div class="form-row">
           <label for="cf-msg">Your problem, wish or collaboration</label>
           <textarea id="cf-msg" name="message" placeholder="Tell us in a few lines what you're after…" required></textarea>
+          <span class="form-error-msg" data-for="cf-msg">Please tell us a little about what you're after.</span>
         </div>
         <div class="form-row">
           <label>How should we keep in touch?</label>
@@ -1205,18 +1224,21 @@ body{
         <div class="form-row conditional show" id="field-email">
           <label for="cf-email">Email address</label>
           <input type="email" id="cf-email" name="email" placeholder="you@example.com" />
+          <span class="form-error-msg" data-for="cf-email">Please enter a valid email address.</span>
         </div>
         <div class="form-row conditional" id="field-phone">
           <label for="cf-phone">Phone number</label>
           <input type="tel" id="cf-phone" name="phone" placeholder="+31 …" />
+          <span class="form-error-msg" data-for="cf-phone">Please enter a valid phone number.</span>
         </div>
         <div class="form-row conditional" id="field-when">
           <label for="cf-when">Preferred date &amp; time</label>
           <input type="text" id="cf-when" name="when" placeholder="e.g. week of 14 July, mornings" />
-          <span class="field-hint">We'll confirm a slot by email. (Online calendar booking coming soon.)</span>
+          <span class="form-error-msg" data-for="cf-when">Please add a preferred date or time.</span>
         </div>
         <button type="submit" class="form-submit">Send</button>
-        <div class="form-success" id="formSuccess">Thanks — your message is ready in your mail app. Hit send and we'll be in touch.</div>
+        <div class="form-success" id="formSuccess">Thanks &mdash; your message has been sent. We'll be in touch soon.</div>
+        <div class="form-fail" id="formFail">Something went wrong sending your message. Please email us directly at conceptstudio@mara.com.</div>
       </form>
       <div class="outro-links">
         <a href="#top">Home</a>
@@ -1279,20 +1301,80 @@ if(cform){
   cform.querySelectorAll('input[name="contact-method"],input[name="intent"]').forEach(r=>r.addEventListener('change', updateFields));
   updateFields();
 
-  cform.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    if(!cform.reportValidity()) return;
-    const name = document.getElementById('cf-name').value.trim();
-    const msg = document.getElementById('cf-msg').value.trim();
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRe = /^[+]?[\d\s()\-]{7,}$/;
+
+  function setError(input, on){
+    const row = input.closest('.form-row');
+    if(row) row.classList.toggle('invalid', on);
+  }
+  function clearErrorOn(input){
+    input.addEventListener('input', ()=>setError(input, false));
+  }
+  [document.getElementById('cf-name'),document.getElementById('cf-msg'),inEmail,inPhone,inWhen].forEach(clearErrorOn);
+
+  function validate(){
+    let ok = true;
+    const name = document.getElementById('cf-name');
+    const msg = document.getElementById('cf-msg');
     const v = method();
     const isBooking = intent()==='appointment';
-    let body = 'Request type: '+(isBooking?'Appointment booking':'Message')+'\n\nName / business: '+name+'\n\nProblem / wish / collaboration:\n'+msg+'\n\nPreferred contact: '+v;
-    if(v==='email'||v==='both') body += '\nEmail: '+inEmail.value.trim();
-    if(v==='phone'||v==='both') body += '\nPhone: '+inPhone.value.trim();
-    if(isBooking) body += '\nPreferred date/time: '+inWhen.value.trim();
-    const subject = (isBooking?'Appointment request from ':'New enquiry from ')+(name||'website');
-    window.location.href = 'mailto:ConceptStudio@Mara.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-    document.getElementById('formSuccess').classList.add('show');
+    // reset
+    cform.querySelectorAll('.form-row').forEach(r=>r.classList.remove('invalid'));
+    if(!name.value.trim()){setError(name,true);ok=false;}
+    if(!msg.value.trim()){setError(msg,true);ok=false;}
+    if(v==='email'||v==='both'){
+      if(!emailRe.test(inEmail.value.trim())){setError(inEmail,true);ok=false;}
+    }
+    if(v==='phone'||v==='both'){
+      if(!phoneRe.test(inPhone.value.trim())){setError(inPhone,true);ok=false;}
+    }
+    if(isBooking && !inWhen.value.trim()){setError(inWhen,true);ok=false;}
+    return ok;
+  }
+
+  const submitBtn = cform.querySelector('.form-submit');
+  const successEl = document.getElementById('formSuccess');
+  const failEl = document.getElementById('formFail');
+
+  cform.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    successEl.classList.remove('show');
+    failEl.classList.remove('show');
+    if(!validate()){
+      const firstBad = cform.querySelector('.form-row.invalid input, .form-row.invalid textarea');
+      if(firstBad) firstBad.focus();
+      return;
+    }
+    const isBooking = intent()==='appointment';
+    const fd = new FormData();
+    fd.append('name', document.getElementById('cf-name').value.trim());
+    fd.append('message', document.getElementById('cf-msg').value.trim());
+    fd.append('request_type', isBooking?'Appointment booking':'Message');
+    fd.append('preferred_contact', method());
+    const v = method();
+    if(v==='email'||v==='both') fd.append('email', inEmail.value.trim());
+    if(v==='phone'||v==='both') fd.append('phone', inPhone.value.trim());
+    if(isBooking) fd.append('preferred_datetime', inWhen.value.trim());
+    fd.append('_subject', (isBooking?'Appointment request from ':'New enquiry from ')+(document.getElementById('cf-name').value.trim()||'website'));
+
+    submitBtn.setAttribute('aria-busy','true');
+    submitBtn.textContent = 'Sending…';
+    try{
+      const res = await fetch(cform.action, {method:'POST', body:fd, headers:{'Accept':'application/json'}});
+      if(res.ok){
+        cform.reset();
+        updateFields();
+        successEl.classList.add('show');
+      } else {
+        failEl.classList.add('show');
+      }
+    } catch(err){
+      failEl.classList.add('show');
+    } finally {
+      submitBtn.removeAttribute('aria-busy');
+      submitBtn.textContent = 'Send';
+    }
   });
 
   // Sidebar CTA pre-selects the appointment option
