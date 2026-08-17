@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png?v=3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0F1A5C;
@@ -30,14 +30,14 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Nunito',system-ui,sans-serif;
+  font-family:'Inter',system-ui,sans-serif;
   background:var(--sky);
   color:var(--navy);
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
 .mono{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;text-transform:uppercase}
-.display{font-family:'Fredoka',sans-serif;font-weight:800;letter-spacing:-0.035em;line-height:0.92}
+.display{font-family:'Inter Tight',sans-serif;font-weight:800;letter-spacing:-0.035em;line-height:0.92}
 
 /* ==================== LAYOUT ==================== */
 .app{
@@ -98,7 +98,7 @@ body{
   .mobile-brand img{width:40px;height:40px;transform:translateY(-2px)}
   .mobile-brand{width:100%;box-sizing:border-box}
   .mobile-brand span{
-    font-family:'Fredoka';font-weight:800;
+    font-family:'Inter Tight';font-weight:800;
     font-size:17px;letter-spacing:-0.02em;
     color:var(--navy);
   }
@@ -190,7 +190,7 @@ body{
 .sidebar-marquee-track{
   display:inline-block;
   animation:sb-scroll 45s linear infinite;
-  font-family:'Fredoka';font-weight:700;
+  font-family:'Inter Tight';font-weight:700;
   font-size:18px;
   letter-spacing:-0.01em;
 }
@@ -231,7 +231,7 @@ body{
   50%{transform:translateY(-10px) rotate(4deg)}
 }
 .sidebar-wordmark{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Fredoka',sans-serif;font-weight:600;
   font-size:clamp(18px,1.8vw,22px);
   line-height:1;letter-spacing:-0.03em;
   color:var(--navy);
@@ -255,7 +255,7 @@ body{
   display:flex;flex-direction:column;gap:2px;
 }
 .sidebar-nav a{
-  font-family:'Fredoka';font-weight:600;
+  font-family:'Inter Tight';font-weight:600;
   font-size:34px;letter-spacing:-0.025em;line-height:1.15;
   color:var(--navy);text-decoration:none;
   opacity:0.55;
@@ -299,7 +299,7 @@ body{
   text-transform:uppercase;letter-spacing:0.12em;
 }
 .contact-item .val{
-  font-family:'Fredoka';font-weight:500;font-size:15px;
+  font-family:'Inter Tight';font-weight:500;font-size:15px;
   color:var(--navy);letter-spacing:-0.01em;
   line-height:1.3;
 }
@@ -387,7 +387,7 @@ body{
   content:"";flex:1;height:1px;background:rgba(15,26,92,0.25);max-width:180px;
 }
 .quote-hero blockquote{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Inter Tight';font-weight:800;
   font-size:clamp(34px,6.2vw,128px);
   line-height:0.98;letter-spacing:-0.035em;
   color:var(--cream);
@@ -409,7 +409,7 @@ body{
   min-width:0;
 }
 .hero-cat h3{
-  font-family:'Fredoka';font-weight:700;
+  font-family:'Inter Tight';font-weight:700;
   font-size:clamp(22px,1.9vw,36px);
   color:var(--cream);letter-spacing:-0.02em;margin-bottom:10px;
   display:flex;align-items:center;gap:9px;
@@ -421,7 +421,7 @@ body{
   background:var(--pink);flex-shrink:0;
 }
 .hero-cat p{
-  font-family:'Nunito';font-weight:400;
+  font-family:'Inter';font-weight:400;
   font-size:clamp(15px,1.05vw,20px);line-height:1.6;
   color:var(--cream);
   text-shadow:0 1px 10px rgba(10,19,68,0.5);
@@ -466,7 +466,7 @@ body{
   display:flex;flex-direction:column;gap:4px;
 }
 .quote-hero .attribution .name{
-  font-family:'Fredoka';font-weight:600;font-size:17px;
+  font-family:'Inter Tight';font-weight:600;font-size:17px;
   color:var(--navy);letter-spacing:-0.01em;
 }
 .quote-hero .attribution .role{
@@ -537,7 +537,7 @@ body{
   display:block;margin-bottom:10px;
 }
 .featured-info h2{
-  font-family:'Fredoka';font-weight:700;
+  font-family:'Inter Tight';font-weight:700;
   font-size:22px;line-height:1.2;
   color:var(--navy);letter-spacing:-0.015em;
 }
@@ -549,7 +549,7 @@ body{
   padding:80px 40px;
 }
 .stories h2,.itinerary h2{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Inter Tight';font-weight:800;
   font-size:clamp(36px,4.6vw,64px);
   text-align:center;color:var(--navy);
   letter-spacing:-0.035em;line-height:0.98;
@@ -598,7 +598,7 @@ body{
   display:block;margin-bottom:6px;
 }
 .story-card h3{
-  font-family:'Fredoka';font-weight:600;
+  font-family:'Inter Tight';font-weight:600;
   font-size:17px;line-height:1.3;
   color:var(--navy);letter-spacing:-0.01em;
 }
@@ -623,7 +623,7 @@ body{
 /* SERVICE TABS (Option B) */
 .svc-wrap{max-width:960px;margin:0 auto}
 .svc-tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.svc-tab{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.35);border:1.5px solid transparent;border-radius:999px;padding:12px 22px 12px 14px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;font-family:'Fredoka';font-weight:700;font-size:17px;letter-spacing:-0.01em;color:var(--navy)}
+.svc-tab{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.35);border:1.5px solid transparent;border-radius:999px;padding:12px 22px 12px 14px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;font-family:'Inter Tight';font-weight:700;font-size:17px;letter-spacing:-0.01em;color:var(--navy)}
 .svc-tab:hover{background:rgba(255,255,255,0.55)}
 .svc-tab.active{background:var(--cream);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px rgba(10,19,68,0.16)}
 .svc-tab:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
@@ -643,17 +643,17 @@ body{
 .svc-panel.s1{--accent:var(--navy)}.svc-panel.s2{--accent:var(--pink)}.svc-panel.s3{--accent:#5BC23A}
 @keyframes svcfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .svc-lead .svc-flow{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.12em;opacity:0.55;margin-bottom:10px}
-.svc-lead .svc-deliver{font-family:'Fredoka';font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-0.035em;line-height:0.95;margin-bottom:18px;color:var(--navy)}
+.svc-lead .svc-deliver{font-family:'Inter Tight';font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-0.035em;line-height:0.95;margin-bottom:18px;color:var(--navy)}
 .svc-lead .svc-deliver .dot{color:var(--accent)}
-.svc-lead p{font-family:'Fredoka';font-weight:500;font-size:19px;line-height:1.4;opacity:0.78;max-width:360px}
+.svc-lead p{font-family:'Inter Tight';font-weight:500;font-size:19px;line-height:1.4;opacity:0.78;max-width:360px}
 .svc-lead .svc-bigicon{width:64px;height:64px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
 .svc-lead .svc-bigicon svg{width:56%;height:56%;display:block}
 .svc-quotes{display:flex;flex-direction:column;gap:14px}
 .svc-quotes .svc-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.14em;opacity:0.5;margin-bottom:2px}
 .svc-quotes .svc-q{background:#fff;border-left:4px solid var(--accent);border-radius:12px;padding:16px 18px 16px 40px;position:relative;font-size:15px;font-style:italic;line-height:1.45;box-shadow:0 2px 10px rgba(15,26,92,0.06)}
-.svc-quotes .svc-q::before{content:'\201C';position:absolute;left:14px;top:8px;font-family:'Fredoka';font-weight:800;font-size:26px;color:var(--accent);line-height:1}
+.svc-quotes .svc-q::before{content:'\201C';position:absolute;left:14px;top:8px;font-family:'Inter Tight';font-weight:800;font-size:26px;color:var(--accent);line-height:1}
 .svc-cta-wrap{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:36px}
-.svc-cta-wrap span{font-family:'Fredoka';font-weight:600;font-size:17px;color:var(--navy)}
+.svc-cta-wrap span{font-family:'Inter Tight';font-weight:600;font-size:17px;color:var(--navy)}
 .svc-cta{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--cream);background:var(--navy);padding:14px 26px;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s}
 .svc-cta:hover{background:#5BC23A;color:var(--navy);transform:translateY(-2px)}
 @media(max-width:860px){.svc-panel{grid-template-columns:1fr;gap:32px;padding:34px 24px}.svc-tab{font-size:15px}.svc-nav{width:40px;height:40px}.svc-stage{gap:6px}}
@@ -676,12 +676,12 @@ body{
 }
 .itin-row:hover{background:rgba(255,255,255,0.32)}
 .itin-num{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Inter Tight';font-weight:800;
   font-size:58px;line-height:1;
   color:var(--navy);letter-spacing:-0.03em;
 }
 .itin-body h4{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Inter Tight';font-weight:800;
   font-size:clamp(14px,1.3vw,18px);
   letter-spacing:-0.02em;line-height:1.05;
   margin-bottom:20px;
@@ -710,7 +710,7 @@ body{
   display:block;margin-bottom:4px;
 }
 .itin-title{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Inter Tight';font-weight:800;
   font-size:clamp(17px,1.6vw,21px);
   letter-spacing:-0.02em;line-height:1.2;
   color:var(--navy);text-align:center;
@@ -719,7 +719,7 @@ body{
   display:flex;align-items:center;justify-content:center;
 }
 .itin-body .desc{
-  font-family:'Fredoka';font-weight:600;font-size:16px;
+  font-family:'Inter Tight';font-weight:600;font-size:16px;
   color:var(--navy);opacity:1;line-height:1.4;
   margin-bottom:16px;
   min-height:4.5em;
@@ -733,7 +733,7 @@ body{
 }
 .itin-quotes li{
   position:relative;
-  font-family:'Nunito';font-size:14px;font-style:italic;
+  font-family:'Inter';font-size:14px;font-style:italic;
   color:var(--navy);line-height:1.5;
   background:#ffffff;
   border-radius:10px;
@@ -744,13 +744,13 @@ body{
 .itin-quotes li::before{
   content:'\201C';
   position:absolute;left:12px;top:6px;
-  font-family:'Fredoka';font-weight:800;font-size:28px;
+  font-family:'Inter Tight';font-weight:800;font-size:28px;
   line-height:1;
 }
 .itin-quotes li::after{
   content:'\201D';
   position:absolute;right:12px;top:6px;
-  font-family:'Fredoka';font-weight:800;font-size:28px;
+  font-family:'Inter Tight';font-weight:800;font-size:28px;
   line-height:1;
 }
 /* Row 1 (Problem) — navy accent */
@@ -812,14 +812,14 @@ body{
   display:block;margin-bottom:24px;
 }
 .about-us h2{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Inter Tight';font-weight:800;
   font-size:clamp(36px,4.6vw,64px);
   line-height:0.98;letter-spacing:-0.035em;
   color:var(--cream);margin-bottom:28px;
 }
 .about-us h2 .pink{color:var(--pink)}
 .about-us p{
-  font-family:'Fredoka';font-weight:500;
+  font-family:'Inter Tight';font-weight:500;
   font-size:clamp(16px,1.5vw,19px);
   line-height:1.5;letter-spacing:-0.01em;
   color:rgba(245,239,228,0.82);
@@ -832,7 +832,7 @@ body{
 }
 .about-stat{display:flex;flex-direction:column;gap:4px}
 .about-stat .n{
-  font-family:'Fredoka';font-weight:800;font-size:30px;
+  font-family:'Inter Tight';font-weight:800;font-size:30px;
   color:var(--cream);letter-spacing:-0.03em;line-height:1;
 }
 .about-stat .l{
@@ -883,7 +883,7 @@ body{
   display:block;margin-bottom:16px;
 }
 .outro-title{
-  font-family:'Fredoka';font-weight:800;
+  font-family:'Inter Tight';font-weight:800;
   font-size:clamp(44px,6vw,84px);
   color:var(--navy);letter-spacing:-0.035em;
   line-height:0.95;
@@ -892,7 +892,7 @@ body{
 .outro-title .pink{color:var(--pink)}
 .outro-email{
   display:inline-block;
-  font-family:'Fredoka';font-weight:600;font-size:22px;
+  font-family:'Inter Tight';font-weight:600;font-size:22px;
   color:var(--navy);text-decoration:none;
   border-bottom:2px solid var(--pink);
   padding-bottom:2px;
@@ -918,7 +918,7 @@ body{
 .contact-form input[type=email],
 .contact-form input[type=tel],
 .contact-form textarea{
-  font-family:'Fredoka';font-weight:500;font-size:16px;
+  font-family:'Inter Tight';font-weight:500;font-size:16px;
   color:var(--navy);
   background:#fff;
   border:1.5px solid rgba(15,26,92,0.18);
@@ -955,7 +955,7 @@ body{
 .conditional{display:none}
 .conditional.show{display:flex}
 .field-hint{
-  font-family:'Nunito';font-size:12px;color:var(--navy);opacity:0.55;line-height:1.4;
+  font-family:'Inter';font-size:12px;color:var(--navy);opacity:0.55;line-height:1.4;
 }
 .form-submit{
   font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
@@ -968,18 +968,18 @@ body{
 }
 .form-submit:hover{transform:translateY(-2px)}
 .form-note{
-  font-family:'Nunito';font-size:13px;color:var(--navy);opacity:0.6;line-height:1.5;
+  font-family:'Inter';font-size:13px;color:var(--navy);opacity:0.6;line-height:1.5;
 }
 .form-success{
   display:none;
   background:var(--green);color:var(--navy);
   border-radius:10px;padding:16px 20px;
-  font-family:'Fredoka';font-weight:600;font-size:15px;
+  font-family:'Inter Tight';font-weight:600;font-size:15px;
 }
 .form-success.show{display:block}
 .form-error-msg{
   display:none;
-  font-family:'Nunito';font-size:12.5px;font-weight:500;
+  font-family:'Inter';font-size:12.5px;font-weight:500;
   color:#C0263A;margin-top:6px;
 }
 .form-row.invalid .form-error-msg{display:block}
@@ -990,7 +990,7 @@ body{
   display:none;
   background:#C0263A;color:#fff;
   border-radius:10px;padding:14px 18px;
-  font-family:'Fredoka';font-weight:600;font-size:14px;
+  font-family:'Inter Tight';font-weight:600;font-size:14px;
 }
 .form-fail.show{display:block}
 .form-submit[aria-busy="true"]{opacity:0.6;pointer-events:none}
@@ -1054,7 +1054,7 @@ body{
     <div class="sidebar-contact">
       <div class="contact-item">
         <span class="label">Email</span>
-        <span class="val"><a href="mailto:conceptstudio@mara.com">conceptstudio@mara.com</a></span>
+        <span class="val"><a href="mailto:mara@conceptstudiomara.com">mara@conceptstudiomara.com</a></span>
       </div>
       <div class="contact-item">
         <span class="label">Located</span>
@@ -1313,13 +1313,13 @@ body{
         </div>
         <button type="submit" class="form-submit">Send</button>
         <div class="form-success" id="formSuccess">Thanks! Your message has been sent. We'll be in touch soon.</div>
-        <div class="form-fail" id="formFail">Something went wrong sending your message. Please email us directly at conceptstudio@mara.com.</div>
+        <div class="form-fail" id="formFail">Something went wrong sending your message. Please email us directly at mara@conceptstudiomara.com.</div>
       </form>
       <div class="outro-links">
         <a href="#top">Home</a>
         <a href="#about">Services</a>
         <a href="#aboutus">About Us</a>
-        <a href="mailto:ConceptStudio@Mara.com">Contact</a>
+        <a href="mailto:mara@conceptstudiomara.com">Contact</a>
       </div>
       <div class="outro-social">
         <a href="https://www.instagram.com/conceptstudiomara" target="_blank" rel="noopener" aria-label="Instagram">
