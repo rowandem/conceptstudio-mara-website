@@ -1034,8 +1034,8 @@ body{
 
   <!-- SPLIT TABS (straddle the blue/cream divider) -->
   <nav class="split-tabs" style="font-family: system-ui; font-weight: 400; width: 108px; gap: 4px">
-    <a href="#top" class="active" style="font-family: monospace; font-size: 10px; width: 30px">CSM</a>
-    <a href="#about" style="font-size: 10px; width: 30px">Services</a>
+    <a href="#csm" class="active" style="font-family: monospace; font-size: 10px; width: 30px">CSM</a>
+    <a href="#services" style="font-size: 10px; width: 30px">Services</a>
     <a href="#aboutus" style="font-size: 10px; width: 30px">About Us</a>
     <a href="#contact" style="font-size: 10px; width: 30px">Contact</a>
   </nav>
@@ -1066,8 +1066,8 @@ body{
         <span class="val">Booking new projects for Q4 2026</span>
       </div>
 
-      <a href="#contact" class="sidebar-cta" id="bookCta">
-        <span>BOOK APPOINTMENT</span>
+      <a href="#contact" class="sidebar-cta" id="bookCta" style="width: 210px">
+        <span>BOOK AN APPOINTMENT</span>
       </a>
     </div>
 
@@ -1108,7 +1108,7 @@ body{
   </aside>
 
   <!-- SCROLLING RIGHT -->
-  <main class="content" id="top">
+  <main class="content" id="csm">
 
     <!-- QUOTE HERO -->
     <section class="quote-hero" data-screen-label="quote">
@@ -1129,7 +1129,7 @@ body{
         </div>
         <div class="hero-cat">
           <h3>Collaboration</h3>
-          <p>Give us a brief or hand us nothing. Either way, we co-create it  together.</p>
+          <p>Give us a brief or hand us nothing. Either way, we co-create it together.</p>
         </div>
         <div class="hero-cat hero-cat-cta">
           <a href="#contact">Let's meet</a>
@@ -1138,7 +1138,7 @@ body{
     </section>
 
     <!-- ITINERARY -->
-    <section class="itinerary" id="about" data-screen-label="itinerary" style="background-color: #FFA2CC">
+    <section class="itinerary" id="services" data-screen-label="itinerary" style="background-color: #FFA2CC">
       <span class="section-eyebrow">(Services)</span>
       <h2 class="reveal">Does one sound <span class="pink">familiar?</span></h2>
       <div class="svc-wrap reveal">
@@ -1313,8 +1313,8 @@ body{
         <div class="form-fail" id="formFail">Something went wrong sending your message. Please email us directly at mara@conceptstudiomara.com.</div>
       </form>
       <div class="outro-links">
-        <a href="#top">Home</a>
-        <a href="#about">Services</a>
+        <a href="#csm">Home</a>
+        <a href="#services">Services</a>
         <a href="#aboutus">About Us</a>
         <a href="mailto:mara@conceptstudiomara.com">Contact</a>
       </div>
@@ -1477,6 +1477,7 @@ if(cform){
 const navLinks = document.querySelectorAll('.split-tabs a');
 function setActive(id){
   navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
+  if(history.replaceState){history.replaceState(null,'', '#'+id);}
 }
 navLinks.forEach(a=>{
   a.addEventListener('click',()=>{
@@ -1486,8 +1487,8 @@ navLinks.forEach(a=>{
 
 // Scroll-spy: update active tab as you scroll
 const spySections = [
-  {el:document.querySelector('.quote-hero'), id:'top'},
-  {el:document.getElementById('about'), id:'about'},
+  {el:document.querySelector('.quote-hero'), id:'csm'},
+  {el:document.getElementById('services'), id:'services'},
   {el:document.getElementById('aboutus'), id:'aboutus'},
   {el:document.getElementById('stories'), id:'stories'},
   {el:document.getElementById('contact'), id:'contact'},
@@ -1496,6 +1497,7 @@ function onScrollSpy(){
   const line = window.innerHeight * 0.4;
   let current = spySections[0].id;
   for(const s of spySections){
+    if(s.el.offsetParent===null && s.el!==document.querySelector('.quote-hero')) continue;
     if(s.el.getBoundingClientRect().top <= line) current = s.id;
   }
   setActive(current);
