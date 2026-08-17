@@ -638,15 +638,16 @@ body{
 .svc-nav:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
 .svc-tab.active .svc-arrow{color:var(--accent);opacity:1}
 .svc-tab.s1{--accent:var(--navy)}.svc-tab.s2{--accent:var(--pink)}.svc-tab.s3{--accent:#5BC23A}
-.svc-panel{background:var(--cream);border-radius:24px;padding:52px 56px;display:none;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;animation:svcfade .35s ease}
+.svc-panel{background:var(--cream);border-radius:24px;padding:52px 56px;display:none;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;animation:svcfade .35s ease}
 .svc-panel.active{display:grid}
 .svc-panel.s1{--accent:var(--navy)}.svc-panel.s2{--accent:var(--pink)}.svc-panel.s3{--accent:#5BC23A}
 @keyframes svcfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.svc-lead .svc-flow{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.12em;opacity:0.55;margin-bottom:10px}
+.svc-lead .svc-icon-row{display:flex;flex-direction:column;align-items:flex-start;gap:48px;margin-bottom:12px}
+.svc-lead .svc-flow{font-family:'Inter Tight';font-weight:700;font-size:clamp(18px,1.9vw,24px);letter-spacing:-0.02em;text-transform:none;opacity:0.85}
 .svc-lead .svc-deliver{font-family:'Inter Tight';font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-0.035em;line-height:0.95;margin-bottom:18px;color:var(--navy)}
 .svc-lead .svc-deliver .dot{color:var(--accent)}
 .svc-lead p{font-family:'Inter Tight';font-weight:500;font-size:19px;line-height:1.4;opacity:0.78;max-width:360px}
-.svc-lead .svc-bigicon{width:64px;height:64px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+.svc-lead .svc-bigicon{width:64px;height:64px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .svc-lead .svc-bigicon svg{width:56%;height:56%;display:block}
 .svc-quotes{display:flex;flex-direction:column;gap:14px}
 .svc-quotes .svc-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.14em;opacity:0.5;margin-bottom:2px}
@@ -1062,7 +1063,7 @@ body{
       </div>
       <div class="contact-item">
         <span class="label">Availability</span>
-        <span class="val">Booking new projects for Q3 2026</span>
+        <span class="val">Booking new projects for Q4 2026</span>
       </div>
 
       <a href="#contact" class="sidebar-cta" id="bookCta">
@@ -1137,13 +1138,13 @@ body{
     </section>
 
     <!-- ITINERARY -->
-    <section class="itinerary" id="about" data-screen-label="itinerary">
+    <section class="itinerary" id="about" data-screen-label="itinerary" style="background-color: #FFA2CC">
       <span class="section-eyebrow">(Services)</span>
       <h2 class="reveal">Does one sound <span class="pink">familiar?</span></h2>
       <div class="svc-wrap reveal">
         <div class="svc-tabs" role="tablist">
           <button class="svc-tab s1 active" role="tab" data-p="svc-p1" aria-selected="true">
-            <span class="svc-mini"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 1 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></span>
+            <span class="svc-mini"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 0 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></span>
             Problem
           </button>
           <button class="svc-tab s2" role="tab" data-p="svc-p2" aria-selected="false">
@@ -1151,7 +1152,7 @@ body{
             Wish
           </button>
           <button class="svc-tab s3" role="tab" data-p="svc-p3" aria-selected="false">
-            <span class="svc-mini"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#FF7AB6"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#FF7AB6"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></span>
+            <span class="svc-mini"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#5BC23A"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#5BC23A"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></span>
             Collaboration
           </button>
         </div>
@@ -1160,8 +1161,7 @@ body{
           <button class="svc-nav svc-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6 L9 12 L15 18"/></svg></button>
         <div class="svc-panel s1 active" id="svc-p1" role="tabpanel">
           <div class="svc-lead">
-            <div class="svc-bigicon"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 1 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></div>
-            <div class="svc-flow">Problem &rarr;</div>
+            <div class="svc-icon-row"><div class="svc-bigicon"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 0 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></div><div class="svc-flow"><span style="font-weight:normal">Problem to</span></div></div>
             <div class="svc-deliver">Solution<span class="dot">.</span></div>
             <p>You bring the challenge or issue. We find the answer worth building.</p>
           </div>
@@ -1175,8 +1175,7 @@ body{
 
         <div class="svc-panel s2" id="svc-p2" role="tabpanel">
           <div class="svc-lead">
-            <div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/><path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/><path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/></svg></div>
-            <div class="svc-flow">Wish &rarr;</div>
+            <div class="svc-icon-row"><div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/><path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/><path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/></svg></div><div class="svc-flow"><span style="font-weight:normal">Wish to</span></div></div>
             <div class="svc-deliver">Ideas<span class="dot">.</span></div>
             <p>You have an idea about where you want to be. We shape the concepts to get there.</p>
           </div>
@@ -1190,8 +1189,7 @@ body{
 
         <div class="svc-panel s3" id="svc-p3" role="tabpanel">
           <div class="svc-lead">
-            <div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#FF7AB6"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#FF7AB6"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></div>
-            <div class="svc-flow">Collaboration &rarr;</div>
+            <div class="svc-icon-row"><div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#5BC23A"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#5BC23A"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></div><div class="svc-flow"><span style="font-weight:normal">Collaboration to</span></div></div>
             <div class="svc-deliver">Co-Creation<span class="dot">.</span></div>
             <p>You have a direction and want a partner to shape it with you.</p>
           </div>
@@ -1223,7 +1221,6 @@ body{
           <div class="about-meta reveal">
             <div class="about-stat"><span class="n">2025</span><span class="l">Founded</span></div>
             <div class="about-stat"><span class="n">RTM</span><span class="l">Rotterdam, NL</span></div>
-            <div class="about-stat"><span class="n">3</span><span class="l">Ways to work</span></div>
           </div>
         </div>
         <div class="about-photo reveal"><img src="assets/about-mara.jpg" alt="Concept Studio MARA" /></div>
@@ -1259,7 +1256,7 @@ body{
     </section>
 
     <!-- WAVE DIVIDER -->
-    <div class="wave">
+    <div class="wave" style="background-color: #0F1A5C">
       <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
         <path d="M0,60 L0,30 Q150,0 300,30 T600,30 T900,30 T1200,30 L1200,60 Z" fill="#F5EFE4"/>
       </svg>
