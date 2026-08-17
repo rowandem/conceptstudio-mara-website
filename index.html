@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Concept Studio MARA — We build what brands have not thought of yet.</title>
+<title>Concept Studio MARA: We build what brands have not thought of yet.</title>
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png?v=3">
@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png?v=3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0F1A5C;
@@ -30,14 +30,14 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Inter',system-ui,sans-serif;
+  font-family:'Nunito',system-ui,sans-serif;
   background:var(--sky);
   color:var(--navy);
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
 .mono{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;text-transform:uppercase}
-.display{font-family:'Inter Tight',sans-serif;font-weight:800;letter-spacing:-0.035em;line-height:0.92}
+.display{font-family:'Fredoka',sans-serif;font-weight:800;letter-spacing:-0.035em;line-height:0.92}
 
 /* ==================== LAYOUT ==================== */
 .app{
@@ -98,7 +98,7 @@ body{
   .mobile-brand img{width:40px;height:40px;transform:translateY(-2px)}
   .mobile-brand{width:100%;box-sizing:border-box}
   .mobile-brand span{
-    font-family:'Inter Tight';font-weight:800;
+    font-family:'Fredoka';font-weight:800;
     font-size:17px;letter-spacing:-0.02em;
     color:var(--navy);
   }
@@ -190,7 +190,7 @@ body{
 .sidebar-marquee-track{
   display:inline-block;
   animation:sb-scroll 45s linear infinite;
-  font-family:'Inter Tight';font-weight:700;
+  font-family:'Fredoka';font-weight:700;
   font-size:18px;
   letter-spacing:-0.01em;
 }
@@ -231,7 +231,7 @@ body{
   50%{transform:translateY(-10px) rotate(4deg)}
 }
 .sidebar-wordmark{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:clamp(18px,1.8vw,22px);
   line-height:1;letter-spacing:-0.03em;
   color:var(--navy);
@@ -255,7 +255,7 @@ body{
   display:flex;flex-direction:column;gap:2px;
 }
 .sidebar-nav a{
-  font-family:'Inter Tight';font-weight:600;
+  font-family:'Fredoka';font-weight:600;
   font-size:34px;letter-spacing:-0.025em;line-height:1.15;
   color:var(--navy);text-decoration:none;
   opacity:0.55;
@@ -299,7 +299,7 @@ body{
   text-transform:uppercase;letter-spacing:0.12em;
 }
 .contact-item .val{
-  font-family:'Inter Tight';font-weight:500;font-size:15px;
+  font-family:'Fredoka';font-weight:500;font-size:15px;
   color:var(--navy);letter-spacing:-0.01em;
   line-height:1.3;
 }
@@ -387,7 +387,7 @@ body{
   content:"";flex:1;height:1px;background:rgba(15,26,92,0.25);max-width:180px;
 }
 .quote-hero blockquote{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:clamp(34px,6.2vw,128px);
   line-height:0.98;letter-spacing:-0.035em;
   color:var(--cream);
@@ -409,7 +409,7 @@ body{
   min-width:0;
 }
 .hero-cat h3{
-  font-family:'Inter Tight';font-weight:700;
+  font-family:'Fredoka';font-weight:700;
   font-size:clamp(22px,1.9vw,36px);
   color:var(--cream);letter-spacing:-0.02em;margin-bottom:10px;
   display:flex;align-items:center;gap:9px;
@@ -421,7 +421,7 @@ body{
   background:var(--pink);flex-shrink:0;
 }
 .hero-cat p{
-  font-family:'Inter';font-weight:400;
+  font-family:'Nunito';font-weight:400;
   font-size:clamp(15px,1.05vw,20px);line-height:1.6;
   color:var(--cream);
   text-shadow:0 1px 10px rgba(10,19,68,0.5);
@@ -429,6 +429,21 @@ body{
 @media (max-width:700px){
   .hero-cats{gap:18px;margin-top:40px}
 }
+.hero-cat-cta{display:none;align-items:center;justify-content:flex-start;border-top:none;padding-top:0}
+@media (max-width:900px){.hero-cat-cta{display:flex}}
+.hero-cat-cta a{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-weight:500;
+  font-size:13px;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--navy);background:var(--pink);
+  padding:16px 26px;border-radius:999px;
+  text-decoration:none;white-space:nowrap;
+  transition:transform .2s;
+  box-shadow:0 6px 20px rgba(10,19,68,0.25);
+}
+.hero-cat-cta a:hover{transform:translateY(-2px)}
+.hero-cat-cta a .arrow{transition:transform .2s}
+.hero-cat-cta a:hover .arrow{transform:translateX(4px)}
 .quote-hero blockquote .pink{color:var(--pink)}
 .quote-hero blockquote .outline{
   -webkit-text-stroke:2px var(--cream);
@@ -451,7 +466,7 @@ body{
   display:flex;flex-direction:column;gap:4px;
 }
 .quote-hero .attribution .name{
-  font-family:'Inter Tight';font-weight:600;font-size:17px;
+  font-family:'Fredoka';font-weight:600;font-size:17px;
   color:var(--navy);letter-spacing:-0.01em;
 }
 .quote-hero .attribution .role{
@@ -522,7 +537,7 @@ body{
   display:block;margin-bottom:10px;
 }
 .featured-info h2{
-  font-family:'Inter Tight';font-weight:700;
+  font-family:'Fredoka';font-weight:700;
   font-size:22px;line-height:1.2;
   color:var(--navy);letter-spacing:-0.015em;
 }
@@ -534,7 +549,7 @@ body{
   padding:80px 40px;
 }
 .stories h2,.itinerary h2{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:clamp(36px,4.6vw,64px);
   text-align:center;color:var(--navy);
   letter-spacing:-0.035em;line-height:0.98;
@@ -583,7 +598,7 @@ body{
   display:block;margin-bottom:6px;
 }
 .story-card h3{
-  font-family:'Inter Tight';font-weight:600;
+  font-family:'Fredoka';font-weight:600;
   font-size:17px;line-height:1.3;
   color:var(--navy);letter-spacing:-0.01em;
 }
@@ -605,6 +620,43 @@ body{
   color:var(--navy);
 }
 .itinerary h2{color:var(--navy)}
+/* SERVICE TABS (Option B) */
+.svc-wrap{max-width:960px;margin:0 auto}
+.svc-tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.svc-tab{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.35);border:1.5px solid transparent;border-radius:999px;padding:12px 22px 12px 14px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;font-family:'Fredoka';font-weight:700;font-size:17px;letter-spacing:-0.01em;color:var(--navy)}
+.svc-tab:hover{background:rgba(255,255,255,0.55)}
+.svc-tab.active{background:var(--cream);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px rgba(10,19,68,0.16)}
+.svc-tab:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.svc-mini{width:38px;height:38px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-mini svg{width:60%;height:60%;display:block}
+.svc-arrow{font-size:14px;opacity:0.5}
+.svc-stage{position:relative;display:flex;align-items:center;gap:12px}
+.svc-stage .svc-panel{flex:1;min-width:0}
+.svc-nav{flex-shrink:0;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:var(--navy);color:var(--cream);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.svc-nav svg{width:22px;height:22px}
+.svc-nav:hover{background:#5BC23A;color:var(--navy);transform:scale(1.08)}
+.svc-nav:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.svc-tab.active .svc-arrow{color:var(--accent);opacity:1}
+.svc-tab.s1{--accent:var(--navy)}.svc-tab.s2{--accent:var(--pink)}.svc-tab.s3{--accent:#5BC23A}
+.svc-panel{background:var(--cream);border-radius:24px;padding:52px 56px;display:none;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;animation:svcfade .35s ease}
+.svc-panel.active{display:grid}
+.svc-panel.s1{--accent:var(--navy)}.svc-panel.s2{--accent:var(--pink)}.svc-panel.s3{--accent:#5BC23A}
+@keyframes svcfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.svc-lead .svc-flow{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.12em;opacity:0.55;margin-bottom:10px}
+.svc-lead .svc-deliver{font-family:'Fredoka';font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-0.035em;line-height:0.95;margin-bottom:18px;color:var(--navy)}
+.svc-lead .svc-deliver .dot{color:var(--accent)}
+.svc-lead p{font-family:'Fredoka';font-weight:500;font-size:19px;line-height:1.4;opacity:0.78;max-width:360px}
+.svc-lead .svc-bigicon{width:64px;height:64px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+.svc-lead .svc-bigicon svg{width:56%;height:56%;display:block}
+.svc-quotes{display:flex;flex-direction:column;gap:14px}
+.svc-quotes .svc-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.14em;opacity:0.5;margin-bottom:2px}
+.svc-quotes .svc-q{background:#fff;border-left:4px solid var(--accent);border-radius:12px;padding:16px 18px 16px 40px;position:relative;font-size:15px;font-style:italic;line-height:1.45;box-shadow:0 2px 10px rgba(15,26,92,0.06)}
+.svc-quotes .svc-q::before{content:'\201C';position:absolute;left:14px;top:8px;font-family:'Fredoka';font-weight:800;font-size:26px;color:var(--accent);line-height:1}
+.svc-cta-wrap{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:36px}
+.svc-cta-wrap span{font-family:'Fredoka';font-weight:600;font-size:17px;color:var(--navy)}
+.svc-cta{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--cream);background:var(--navy);padding:14px 26px;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s}
+.svc-cta:hover{background:#5BC23A;color:var(--navy);transform:translateY(-2px)}
+@media(max-width:860px){.svc-panel{grid-template-columns:1fr;gap:32px;padding:34px 24px}.svc-tab{font-size:15px}.svc-nav{width:40px;height:40px}.svc-stage{gap:6px}}
 .itinerary-list{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -624,12 +676,12 @@ body{
 }
 .itin-row:hover{background:rgba(255,255,255,0.32)}
 .itin-num{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:58px;line-height:1;
   color:var(--navy);letter-spacing:-0.03em;
 }
 .itin-body h4{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:clamp(14px,1.3vw,18px);
   letter-spacing:-0.02em;line-height:1.05;
   margin-bottom:20px;
@@ -658,7 +710,7 @@ body{
   display:block;margin-bottom:4px;
 }
 .itin-title{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:clamp(17px,1.6vw,21px);
   letter-spacing:-0.02em;line-height:1.2;
   color:var(--navy);text-align:center;
@@ -667,7 +719,7 @@ body{
   display:flex;align-items:center;justify-content:center;
 }
 .itin-body .desc{
-  font-family:'Inter Tight';font-weight:600;font-size:16px;
+  font-family:'Fredoka';font-weight:600;font-size:16px;
   color:var(--navy);opacity:1;line-height:1.4;
   margin-bottom:16px;
   min-height:4.5em;
@@ -681,7 +733,7 @@ body{
 }
 .itin-quotes li{
   position:relative;
-  font-family:'Inter';font-size:14px;font-style:italic;
+  font-family:'Nunito';font-size:14px;font-style:italic;
   color:var(--navy);line-height:1.5;
   background:#ffffff;
   border-radius:10px;
@@ -692,13 +744,13 @@ body{
 .itin-quotes li::before{
   content:'\201C';
   position:absolute;left:12px;top:6px;
-  font-family:'Inter Tight';font-weight:800;font-size:28px;
+  font-family:'Fredoka';font-weight:800;font-size:28px;
   line-height:1;
 }
 .itin-quotes li::after{
   content:'\201D';
   position:absolute;right:12px;top:6px;
-  font-family:'Inter Tight';font-weight:800;font-size:28px;
+  font-family:'Fredoka';font-weight:800;font-size:28px;
   line-height:1;
 }
 /* Row 1 (Problem) — navy accent */
@@ -760,14 +812,14 @@ body{
   display:block;margin-bottom:24px;
 }
 .about-us h2{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:clamp(36px,4.6vw,64px);
   line-height:0.98;letter-spacing:-0.035em;
   color:var(--cream);margin-bottom:28px;
 }
 .about-us h2 .pink{color:var(--pink)}
 .about-us p{
-  font-family:'Inter Tight';font-weight:500;
+  font-family:'Fredoka';font-weight:500;
   font-size:clamp(16px,1.5vw,19px);
   line-height:1.5;letter-spacing:-0.01em;
   color:rgba(245,239,228,0.82);
@@ -780,7 +832,7 @@ body{
 }
 .about-stat{display:flex;flex-direction:column;gap:4px}
 .about-stat .n{
-  font-family:'Inter Tight';font-weight:800;font-size:30px;
+  font-family:'Fredoka';font-weight:800;font-size:30px;
   color:var(--cream);letter-spacing:-0.03em;line-height:1;
 }
 .about-stat .l{
@@ -831,7 +883,7 @@ body{
   display:block;margin-bottom:16px;
 }
 .outro-title{
-  font-family:'Inter Tight';font-weight:800;
+  font-family:'Fredoka';font-weight:800;
   font-size:clamp(44px,6vw,84px);
   color:var(--navy);letter-spacing:-0.035em;
   line-height:0.95;
@@ -840,7 +892,7 @@ body{
 .outro-title .pink{color:var(--pink)}
 .outro-email{
   display:inline-block;
-  font-family:'Inter Tight';font-weight:600;font-size:22px;
+  font-family:'Fredoka';font-weight:600;font-size:22px;
   color:var(--navy);text-decoration:none;
   border-bottom:2px solid var(--pink);
   padding-bottom:2px;
@@ -866,7 +918,7 @@ body{
 .contact-form input[type=email],
 .contact-form input[type=tel],
 .contact-form textarea{
-  font-family:'Inter Tight';font-weight:500;font-size:16px;
+  font-family:'Fredoka';font-weight:500;font-size:16px;
   color:var(--navy);
   background:#fff;
   border:1.5px solid rgba(15,26,92,0.18);
@@ -903,7 +955,7 @@ body{
 .conditional{display:none}
 .conditional.show{display:flex}
 .field-hint{
-  font-family:'Inter';font-size:12px;color:var(--navy);opacity:0.55;line-height:1.4;
+  font-family:'Nunito';font-size:12px;color:var(--navy);opacity:0.55;line-height:1.4;
 }
 .form-submit{
   font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
@@ -916,18 +968,18 @@ body{
 }
 .form-submit:hover{transform:translateY(-2px)}
 .form-note{
-  font-family:'Inter';font-size:13px;color:var(--navy);opacity:0.6;line-height:1.5;
+  font-family:'Nunito';font-size:13px;color:var(--navy);opacity:0.6;line-height:1.5;
 }
 .form-success{
   display:none;
   background:var(--green);color:var(--navy);
   border-radius:10px;padding:16px 20px;
-  font-family:'Inter Tight';font-weight:600;font-size:15px;
+  font-family:'Fredoka';font-weight:600;font-size:15px;
 }
 .form-success.show{display:block}
 .form-error-msg{
   display:none;
-  font-family:'Inter';font-size:12.5px;font-weight:500;
+  font-family:'Nunito';font-size:12.5px;font-weight:500;
   color:#C0263A;margin-top:6px;
 }
 .form-row.invalid .form-error-msg{display:block}
@@ -938,7 +990,7 @@ body{
   display:none;
   background:#C0263A;color:#fff;
   border-radius:10px;padding:14px 18px;
-  font-family:'Inter Tight';font-weight:600;font-size:14px;
+  font-family:'Fredoka';font-weight:600;font-size:14px;
 }
 .form-fail.show{display:block}
 .form-submit[aria-busy="true"]{opacity:0.6;pointer-events:none}
@@ -984,7 +1036,6 @@ body{
     <a href="#top" class="active" style="font-family: monospace; font-size: 10px; width: 30px">CSM</a>
     <a href="#about" style="font-size: 10px; width: 30px">Services</a>
     <a href="#aboutus" style="font-size: 10px; width: 30px">About Us</a>
-    <a href="#stories" style="font-size: 10px; width: 30px">Projects</a>
     <a href="#contact" style="font-size: 10px; width: 30px">Contact</a>
   </nav>
 
@@ -1011,7 +1062,7 @@ body{
       </div>
       <div class="contact-item">
         <span class="label">Availability</span>
-        <span class="val">Booking new projects — Q3 2026</span>
+        <span class="val">Booking new projects for Q3 2026</span>
       </div>
 
       <a href="#contact" class="sidebar-cta" id="bookCta">
@@ -1022,14 +1073,14 @@ body{
     <!-- BOTTOM: socials + status -->
     <div class="sidebar-bottom">
       <div class="sidebar-social">
-        <a href="#" aria-label="Instagram">
+        <a href="https://www.instagram.com/conceptstudiomara" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
             <circle cx="12" cy="12" r="4.2"></circle>
             <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle>
           </svg>
         </a>
-        <a href="#" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/company/concept-studio-mara/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
             <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.05-3.02 4.16V23H8V8z"></path>
           </svg>
@@ -1077,7 +1128,10 @@ body{
         </div>
         <div class="hero-cat">
           <h3>Collaboration</h3>
-          <p>Hand us a brief or hand us nothing. Either way, we make it  together.</p>
+          <p>Give us a brief or hand us nothing. Either way, we co-create it  together.</p>
+        </div>
+        <div class="hero-cat hero-cat-cta">
+          <a href="#contact">Let's meet</a>
         </div>
       </div>
     </section>
@@ -1085,62 +1139,75 @@ body{
     <!-- ITINERARY -->
     <section class="itinerary" id="about" data-screen-label="itinerary">
       <span class="section-eyebrow">(Services)</span>
-      <h2 class="reveal">Which one sounds <span class="pink">familiar?</span></h2>
-      <div class="itinerary-list">
-        <div class="itin-row reveal">
-          <p class="itin-title">You bring the challenge or issue.</p>
-          <div class="itin-img i1" aria-hidden="true">
-            <svg viewBox="0 0 64 64">
-              <path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 1 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/>
-            </svg>
+      <h2 class="reveal">Does one sound <span class="pink">familiar?</span></h2>
+      <div class="svc-wrap reveal">
+        <div class="svc-tabs" role="tablist">
+          <button class="svc-tab s1 active" role="tab" data-p="svc-p1" aria-selected="true">
+            <span class="svc-mini"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 1 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></span>
+            Problem
+          </button>
+          <button class="svc-tab s2" role="tab" data-p="svc-p2" aria-selected="false">
+            <span class="svc-mini"><svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/><path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/><path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/></svg></span>
+            Wish
+          </button>
+          <button class="svc-tab s3" role="tab" data-p="svc-p3" aria-selected="false">
+            <span class="svc-mini"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#FF7AB6"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#FF7AB6"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></span>
+            Collaboration
+          </button>
+        </div>
+
+        <div class="svc-stage">
+          <button class="svc-nav svc-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6 L9 12 L15 18"/></svg></button>
+        <div class="svc-panel s1 active" id="svc-p1" role="tabpanel">
+          <div class="svc-lead">
+            <div class="svc-bigicon"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 1 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></div>
+            <div class="svc-flow">Problem &rarr;</div>
+            <div class="svc-deliver">Solution<span class="dot">.</span></div>
+            <p>You bring the challenge or issue. We find the answer worth building.</p>
           </div>
-          <div class="itin-body">
-            <h4><span class="from">Problem</span><span class="arrow">&rarr;</span><span class="to">Solution</span></h4>
-            <ul class="itin-quotes">
-              <li>Product X is not selling as well as expected.</li>
-              <li>Expansion of the product offer is necessary &amp; I do not know where to start.</li>
-              <li>Target audience has troubles finding the products.</li>
-            </ul>
+          <div class="svc-quotes">
+            <span class="svc-lbl">Sounds like</span>
+            <div class="svc-q">Product X is not selling as well as expected.</div>
+            <div class="svc-q">Expansion of the product offer is necessary &amp; I do not know where to start.</div>
+            <div class="svc-q">The target audience has trouble finding the products.</div>
           </div>
         </div>
-        <div class="itin-row reveal">
-          <p class="itin-title">You have an idea about where you want to be.</p>
-          <div class="itin-img i3" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/>
-              <path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/>
-              <path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/>
-            </svg>
+
+        <div class="svc-panel s2" id="svc-p2" role="tabpanel">
+          <div class="svc-lead">
+            <div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/><path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/><path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/></svg></div>
+            <div class="svc-flow">Wish &rarr;</div>
+            <div class="svc-deliver">Ideas<span class="dot">.</span></div>
+            <p>You have an idea about where you want to be. We shape the concepts to get there.</p>
           </div>
-          <div class="itin-body">
-            <h4><span class="from">Wish</span><span class="arrow">&rarr;</span><span class="to">Ideas</span></h4>
-            <ul class="itin-quotes">
-              <li>We want to broaden our reach and appeal to a new audience.</li>
-              <li>We would like to increase support &amp; engagement between different teams.</li>
-              <li>We would like to jump on trend or event X, as it will create more engagement.</li>
-            </ul>
+          <div class="svc-quotes">
+            <span class="svc-lbl">Sounds like</span>
+            <div class="svc-q">We want to broaden our reach and appeal to a new audience.</div>
+            <div class="svc-q">We would like to increase support &amp; engagement between different teams.</div>
+            <div class="svc-q">We would like to jump on trend or event X, as it will create more engagement.</div>
           </div>
         </div>
-        <div class="itin-row reveal">
-          <p class="itin-title">You have a direction and want a partner to shape it with.</p>
-          <div class="itin-img i4" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none">
-              <!-- person left (pink) -->
-              <circle cx="24" cy="24" r="7" fill="#FF7AB6"/>
-              <path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#FF7AB6"/>
-              <!-- person right (cream) -->
-              <circle cx="41" cy="24" r="7" fill="#F5EFE4"/>
-              <path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/>
-            </svg>
+
+        <div class="svc-panel s3" id="svc-p3" role="tabpanel">
+          <div class="svc-lead">
+            <div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#FF7AB6"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#FF7AB6"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></div>
+            <div class="svc-flow">Collaboration &rarr;</div>
+            <div class="svc-deliver">Co-Creation<span class="dot">.</span></div>
+            <p>You have a direction and want a partner to shape it with you.</p>
           </div>
-          <div class="itin-body">
-            <h4><span class="from">Collaboration</span><span class="arrow">&rarr;</span><span class="to">Co-Creation</span></h4>
-            <ul class="itin-quotes">
-              <li>Our team seems to be stuck &amp; we do not know what to do about it.</li>
-              <li>We have several ideas, but we do not know how to present it to BOM/stakeholders.</li>
-              <li>Our teams are not fully on board with the direction we're taking.</li>
-            </ul>
+          <div class="svc-quotes">
+            <span class="svc-lbl">Sounds like</span>
+            <div class="svc-q">Our team seems to be stuck &amp; we do not know what to do about it.</div>
+            <div class="svc-q">We have several ideas, but we do not know how to present it to BOM/stakeholders.</div>
+            <div class="svc-q">Our teams are not fully on board with the direction we're taking.</div>
           </div>
+        </div>
+          <button class="svc-nav svc-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 L15 12 L9 18"/></svg></button>
+        </div>
+
+        <div class="svc-cta-wrap reveal">
+          <span>Not sure which one fits?</span>
+          <a href="#contact" class="svc-cta">Let's talk it through</a>
         </div>
       </div>
     </section>
@@ -1151,7 +1218,7 @@ body{
         <div class="about-text">
           <span class="about-eyebrow">(About us)</span>
           <h2 class="reveal">A small studio<br/>with <span class="pink">big ideas.</span></h2>
-          <p class="reveal">Concept Studio MARA is a Rotterdam based studio for creative concept development, experience design &amp; brand innovation. We believe strong concepts start with the right questions. Whether you bring a challenge, a wish or a co-creation opportunity, we turn it into something meaningful.</p>
+          <p class="reveal">Concept Studio MARA is a Rotterdam-based studio for creative concept development, experience design &amp; brand innovation. We believe strong concepts start with the right questions. Whether you bring a challenge, a wish or a co-creation opportunity, we turn it into something meaningful.</p>
           <p class="reveal">Let’s begin strong: a good conversation with a coffee that matches the energy!</p>
           <div class="about-meta reveal">
             <div class="about-stat"><span class="n">2025</span><span class="l">Founded</span></div>
@@ -1164,29 +1231,29 @@ body{
     </section>
 
     <!-- STORIES -->
-    <section class="stories" id="stories" data-screen-label="stories">
+    <section class="stories" id="stories" data-screen-label="stories" style="display:none">
       <span class="section-eyebrow">(Projects)</span>
       <h2 class="reveal">Selected <span class="pink">projects.</span></h2>
       <div class="stories-grid">
         <div class="story-card reveal">
           <div class="story-thumb t1">[ project image 01 ]</div>
-          <span class="date">October 10, 2025</span>
-          <h3>— Project title goes here, concept-led campaign</h3>
+          <span class="date">10 October 2025</span>
+          <h3>Project title goes here, concept-led campaign</h3>
         </div>
         <div class="story-card reveal">
           <div class="story-thumb t2">[ project image 02 ]</div>
-          <span class="date">October 2, 2025</span>
-          <h3>— Another project title, product launch</h3>
+          <span class="date">2 October 2025</span>
+          <h3>Another project title, product launch</h3>
         </div>
         <div class="story-card reveal">
           <div class="story-thumb t3">[ project image 03 ]</div>
-          <span class="date">September 17, 2025</span>
-          <h3>— Workshop series, dangerous teams</h3>
+          <span class="date">17 September 2025</span>
+          <h3>Workshop series, dangerous teams</h3>
         </div>
         <div class="story-card reveal">
           <div class="story-thumb t4">[ project image 04 ]</div>
-          <span class="date">September 2, 2025</span>
-          <h3>— Brand identity, ground-up rebuild</h3>
+          <span class="date">2 September 2025</span>
+          <h3>Brand identity, ground-up rebuild</h3>
         </div>
       </div>
     </section>
@@ -1245,31 +1312,30 @@ body{
           <span class="form-error-msg" data-for="cf-when">Please add a preferred date or time.</span>
         </div>
         <button type="submit" class="form-submit">Send</button>
-        <div class="form-success" id="formSuccess">Thanks &mdash; your message has been sent. We'll be in touch soon.</div>
+        <div class="form-success" id="formSuccess">Thanks! Your message has been sent. We'll be in touch soon.</div>
         <div class="form-fail" id="formFail">Something went wrong sending your message. Please email us directly at conceptstudio@mara.com.</div>
       </form>
       <div class="outro-links">
         <a href="#top">Home</a>
         <a href="#about">Services</a>
         <a href="#aboutus">About Us</a>
-        <a href="#stories">Projects</a>
         <a href="mailto:ConceptStudio@Mara.com">Contact</a>
       </div>
       <div class="outro-social">
-        <a href="#" aria-label="Instagram">
+        <a href="https://www.instagram.com/conceptstudiomara" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
             <circle cx="12" cy="12" r="4.2"></circle>
             <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle>
           </svg>
         </a>
-        <a href="#" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/company/concept-studio-mara/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.05-3.02 4.16V23H8V8z"></path>
           </svg>
         </a>
       </div>
-      <span class="outro-copyright">© 2026 — Concept Studio MARA — Rotterdam</span>
+      <span class="outro-copyright">© 2026 Concept Studio MARA, Rotterdam</span>
     </section>
 
   </main>
@@ -1283,6 +1349,21 @@ const io = new IntersectionObserver((entries)=>{
   });
 },{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Service tabs (Option B)
+const svcTabs=[...document.querySelectorAll('.svc-tab')];
+function activateSvc(i){
+  const n=svcTabs.length;i=(i+n)%n;
+  svcTabs.forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});
+  document.querySelectorAll('.svc-panel').forEach(x=>x.classList.remove('active'));
+  const t=svcTabs[i];t.classList.add('active');t.setAttribute('aria-selected','true');
+  const p=document.getElementById(t.dataset.p);if(p)p.classList.add('active');
+}
+svcTabs.forEach((t,i)=>t.addEventListener('click',()=>activateSvc(i)));
+function svcCurrent(){return svcTabs.findIndex(x=>x.classList.contains('active'));}
+const svcPrev=document.querySelector('.svc-prev');const svcNext=document.querySelector('.svc-next');
+if(svcPrev)svcPrev.addEventListener('click',()=>activateSvc(svcCurrent()-1));
+if(svcNext)svcNext.addEventListener('click',()=>activateSvc(svcCurrent()+1));
 
 // Contact form: conditional fields + submit
 const cform = document.getElementById('contactForm');
