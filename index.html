@@ -289,15 +289,16 @@ body{
 .sidebar-cta{
   margin-top:22px;
   display:flex;align-items:center;justify-content:center;gap:10px;
-  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
-  text-transform:uppercase;letter-spacing:0.1em;
+  font-family:'Inter Tight',sans-serif;font-size:16px;font-weight:600;
+  letter-spacing:-0.01em;
   color:var(--navy);background:var(--pink);
-  padding:16px 32px;border-radius:999px;
+  padding:16px 32px;border-radius:10px;
   text-decoration:none;white-space:nowrap;
   transition:transform .2s;
 }
 .sidebar-cta:hover{
   transform:translateY(-2px);
+  background:#F5559E;
 }
 .contact-item{
   display:flex;flex-direction:column;gap:2px;
@@ -442,15 +443,15 @@ body{
 @media (max-width:900px){.hero-cat-cta{display:flex}}
 .hero-cat-cta a{
   display:inline-flex;align-items:center;gap:10px;
-  font-family:'JetBrains Mono',monospace;font-weight:500;
+  font-family:'Inter Tight',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;
   font-size:13px;text-transform:uppercase;letter-spacing:0.08em;
   color:var(--navy);background:var(--pink);
-  padding:16px 26px;border-radius:999px;
+  padding:16px 26px;border-radius:10px;
   text-decoration:none;white-space:nowrap;
   transition:transform .2s;
   box-shadow:0 6px 20px rgba(10,19,68,0.25);
 }
-.hero-cat-cta a:hover{transform:translateY(-2px)}
+.hero-cat-cta a:hover{transform:translateY(-2px);background:#F5559E}
 .hero-cat-cta a .arrow{transition:transform .2s}
 .hero-cat-cta a:hover .arrow{transform:translateX(4px)}
 .quote-hero blockquote .pink{color:var(--pink)}
@@ -664,8 +665,8 @@ body{
 .svc-quotes .svc-q::before{content:'\201C';position:absolute;left:14px;top:8px;font-family:'Inter Tight';font-weight:800;font-size:26px;color:var(--accent);line-height:1}
 .svc-cta-wrap{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:36px}
 .svc-cta-wrap span{font-family:'Inter Tight';font-weight:600;font-size:17px;color:var(--navy)}
-.svc-cta{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--cream);background:var(--navy);padding:14px 26px;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s}
-.svc-cta:hover{background:#5BC23A;color:var(--navy);transform:translateY(-2px)}
+.svc-cta{display:inline-flex;align-items:center;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;color:var(--navy);background:#5BC23A;padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .2s}
+.svc-cta:hover{transform:translateY(-2px);background:#4AA82F}
 @media(max-width:860px){.svc-panel{grid-template-columns:1fr;gap:32px;padding:34px 24px}.svc-tab{font-size:15px}.svc-nav{width:40px;height:40px}.svc-stage{gap:6px}}
 .itinerary-list{
   display:grid;
@@ -968,15 +969,16 @@ body{
   font-family:'Inter';font-size:12px;color:var(--navy);opacity:0.55;line-height:1.4;
 }
 .form-submit{
-  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
-  text-transform:uppercase;letter-spacing:0.1em;
+  font-family:'Inter Tight',sans-serif;font-size:16px;font-weight:600;
+  letter-spacing:-0.01em;
+  display:inline-flex;align-items:center;gap:9px;
   background:var(--pink);color:var(--navy);
-  border:none;border-radius:999px;
+  border:none;border-radius:10px;
   padding:16px 32px;cursor:pointer;
   transition:transform .2s;
   align-self:flex-start;
 }
-.form-submit:hover{transform:translateY(-2px)}
+.form-submit:hover{transform:translateY(-2px);background:#F5559E}
 .form-note{
   font-family:'Inter';font-size:13px;color:var(--navy);opacity:0.6;line-height:1.5;
 }
@@ -1075,8 +1077,8 @@ body{
         <span class="val">Booking new projects for Q4 2026</span>
       </div>
 
-      <a href="#contact" class="sidebar-cta" id="bookCta" style="width: 210px">
-        <span>BOOK AN APPOINTMENT</span>
+      <a href="#contact" class="sidebar-cta" id="bookCta">
+        <span>Book an appointment</span>
       </a>
     </div>
 
@@ -1214,7 +1216,7 @@ body{
 
         <div class="svc-cta-wrap reveal">
           <span>Not sure which one fits?</span>
-          <a href="#contact" class="svc-cta">Let's talk it through</a>
+          <a href="#contact" class="svc-cta">Let's talk</a>
         </div>
       </div>
     </section>
@@ -1317,7 +1319,7 @@ body{
           <input type="text" id="cf-when" name="when" placeholder="e.g. week of 14 July, mornings" />
           <span class="form-error-msg" data-for="cf-when">Please add a preferred date or time.</span>
         </div>
-        <button type="submit" class="form-submit">Send</button>
+        <button type="submit" class="form-submit">Send<svg class="btn-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg></button>
         <div class="form-success" id="formSuccess">Thanks! Your message has been sent. We'll be in touch soon.</div>
         <div class="form-fail" id="formFail">Something went wrong sending your message. Please email us directly at mara@conceptstudiomara.com.</div>
       </form>
