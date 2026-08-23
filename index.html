@@ -20,6 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=emoji_objects,partner_exchange,toys_and_games" />
 <style>
 :root{
   --navy:#0F1A5C;
@@ -66,8 +67,11 @@ body{
   height:100vh;
   padding:40px 40px 80px;
   display:flex;flex-direction:column;
-  overflow:hidden;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:none;
 }
+.sidebar::-webkit-scrollbar{display:none}
 @media (max-width:900px){
   .sidebar{position:relative;height:auto;min-height:auto;padding:0 !important}
   .sidebar > *:not(.sidebar-marquee){display:none !important}
@@ -632,12 +636,14 @@ body{
 .itinerary h2{color:var(--navy)}
 /* SERVICE TABS (Option B) */
 .svc-wrap{max-width:960px;margin:0 auto}
-.svc-tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.svc-tab{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.35);border:1.5px solid transparent;border-radius:999px;padding:12px 22px 12px 14px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;font-family:'Inter Tight';font-weight:700;font-size:17px;letter-spacing:-0.01em;color:var(--navy)}
+.svc-tabs{display:flex;gap:clamp(6px,1vw,12px);justify-content:center;flex-wrap:nowrap;margin-bottom:14px;align-items:center;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:14px 2px 26px}
+.svc-tabs::-webkit-scrollbar{display:none}
+.svc-tab{scroll-snap-align:center;flex-shrink:0}
+.svc-tab{display:flex;align-items:center;gap:clamp(6px,0.9vw,12px);min-width:0;flex-shrink:1;white-space:nowrap;background:rgba(255,255,255,0.35);border:1.5px solid transparent;border-radius:999px;padding:clamp(9px,1.1vw,12px) clamp(13px,1.8vw,22px) clamp(9px,1.1vw,12px) clamp(9px,1.2vw,14px);cursor:pointer;transition:background .2s,border-color .2s,transform .2s;font-family:'Inter Tight';font-weight:700;font-size:clamp(12px,1.35vw,17px);letter-spacing:-0.01em;color:var(--navy)}
 .svc-tab:hover{background:rgba(255,255,255,0.55)}
-.svc-tab.active{background:var(--cream);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px rgba(10,19,68,0.16)}
+.svc-tab.active{background:var(--cream);border-color:var(--accent);box-shadow:0 6px 18px rgba(10,19,68,0.14)}
 .svc-tab:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
-.svc-mini{width:38px;height:38px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-mini{width:clamp(26px,2.9vw,38px);height:clamp(26px,2.9vw,38px);border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .svc-mini svg{width:60%;height:60%;display:block}
 .svc-arrow{font-size:14px;opacity:0.5}
 .svc-stage{position:relative;display:flex;align-items:center;gap:12px}
@@ -648,26 +654,33 @@ body{
 .svc-nav:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
 .svc-tab.active .svc-arrow{color:var(--accent);opacity:1}
 .svc-tab.s1{--accent:var(--navy)}.svc-tab.s2{--accent:var(--pink)}.svc-tab.s3{--accent:#5BC23A}
-.svc-panel{background:var(--cream);border-radius:24px;padding:52px 56px;display:none;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;animation:svcfade .35s ease}
+.svc-panel{background:var(--cream);border-radius:24px;padding:52px 56px;display:none;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center;animation:svcfade .35s ease;position:relative;overflow:hidden}
+.svc-panel::after{content:"";position:absolute;top:-160px;right:-126px;width:250px;height:250px;border-radius:50%;border:52px solid var(--accent);pointer-events:none;z-index:0}
+.svc-lead,.svc-quotes{position:relative;z-index:1}
 .svc-panel.active{display:grid}
 .svc-panel.s1{--accent:var(--navy)}.svc-panel.s2{--accent:var(--pink)}.svc-panel.s3{--accent:#5BC23A}
 @keyframes svcfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.svc-lead .svc-icon-row{display:flex;flex-direction:column;align-items:flex-start;gap:48px;margin-bottom:12px}
-.svc-lead .svc-flow{font-family:'Inter Tight';font-weight:700;font-size:clamp(18px,1.9vw,24px);letter-spacing:-0.02em;text-transform:none;opacity:0.85}
-.svc-lead .svc-deliver{font-family:'Inter Tight';font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-0.035em;line-height:0.95;margin-bottom:18px;color:var(--navy)}
+.svc-lead .svc-icon-row{display:flex;flex-direction:row;align-items:center;gap:14px;margin-bottom:6px}
+.svc-lead .svc-flow{font-family:'Inter Tight';font-weight:600;font-size:clamp(17px,1.7vw,22px);letter-spacing:-0.01em;color:var(--navy);opacity:1}
+.svc-lead .svc-deliver{font-family:'Inter Tight';font-weight:800;font-size:clamp(38px,4.6vw,58px);letter-spacing:-0.035em;line-height:1;margin-bottom:34px;color:var(--navy)}
 .svc-lead .svc-deliver .dot{color:var(--accent)}
-.svc-lead p{font-family:'Inter Tight';font-weight:500;font-size:19px;line-height:1.4;opacity:0.78;max-width:360px}
-.svc-lead .svc-bigicon{width:64px;height:64px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-lead p{font-family:'Inter Tight';font-weight:500;font-size:clamp(21px,2.1vw,27px);line-height:1.28;letter-spacing:-0.015em;color:var(--navy);opacity:1;max-width:340px;margin-bottom:26px}
+.svc-underline{display:block;width:150px;height:14px;border-radius:999px;background:var(--accent);margin-left:auto;margin-right:8px;transform:rotate(-4deg)}
+.svc-lead .svc-bigicon{width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .svc-lead .svc-bigicon svg{width:56%;height:56%;display:block}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.svc-msym{color:#F5EFE4;font-size:24px;line-height:1}
+.svc-mini .svc-msym{font-size:clamp(15px,1.6vw,21px)}
 .svc-quotes{display:flex;flex-direction:column;gap:14px}
-.svc-quotes .svc-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.14em;opacity:0.5;margin-bottom:2px}
-.svc-quotes .svc-q{background:#fff;border-left:4px solid var(--accent);border-radius:12px;padding:16px 18px 16px 40px;position:relative;font-size:15px;font-style:italic;line-height:1.45;box-shadow:0 2px 10px rgba(15,26,92,0.06)}
-.svc-quotes .svc-q::before{content:'\201C';position:absolute;left:14px;top:8px;font-family:'Inter Tight';font-weight:800;font-size:26px;color:var(--accent);line-height:1}
+.svc-quotes .svc-lbl{display:none}
+.svc-quotes .svc-q{background:#fff;border:none;border-radius:14px;padding:18px 22px;position:relative;font-family:'Inter Tight';font-weight:500;font-size:16px;font-style:italic;line-height:1.35;letter-spacing:-0.01em;color:var(--navy);box-shadow:0 2px 10px rgba(15,26,92,0.05)}
+.svc-quotes .svc-q::before{content:none}
 .svc-cta-wrap{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:36px}
 .svc-cta-wrap span{font-family:'Inter Tight';font-weight:600;font-size:17px;color:var(--navy)}
 .svc-cta{display:inline-flex;align-items:center;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;color:var(--navy);background:#5BC23A;padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .2s}
 .svc-cta:hover{transform:translateY(-2px);background:#4AA82F}
-@media(max-width:860px){.svc-panel{grid-template-columns:1fr;gap:32px;padding:34px 24px}.svc-tab{font-size:15px}.svc-nav{width:40px;height:40px}.svc-stage{gap:6px}}
+@media(max-width:1100px){.svc-panel{grid-template-columns:1fr;gap:32px;padding:40px 32px}.svc-panel::after{width:170px;height:170px;border-width:36px;top:-112px;right:-88px}.svc-underline{margin-left:0}.svc-lead p{max-width:none}}
+@media(max-width:860px){.svc-panel{padding:34px 24px}.svc-nav{width:40px;height:40px}.svc-stage{gap:6px}}
 .itinerary-list{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -814,8 +827,8 @@ body{
 }
 .about-inner{
   max-width:1080px;margin:0 auto;
-  display:grid;grid-template-columns:1.25fr 1fr;
-  gap:64px;align-items:center;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,240px);
+  gap:48px;align-items:center;
 }
 .about-eyebrow{
   font-family:'JetBrains Mono',monospace;font-size:12px;
@@ -836,6 +849,10 @@ body{
   color:rgba(245,239,228,0.82);
   max-width:480px;margin-bottom:18px;
 }
+.gap-sm{display:inline-block;width:0.28em}
+.coffee-word{position:relative;white-space:nowrap}
+.sketch-note{display:block;width:clamp(160px,18vw,215px);height:auto;margin-top:16px;opacity:0.8}
+@media(max-width:600px){.sketch-note{gap:4px;margin-top:20px}}
 .about-meta{
   display:flex;gap:40px;flex-wrap:wrap;
   margin-top:36px;padding-top:28px;
@@ -862,10 +879,10 @@ body{
   width:100%;height:100%;
   object-fit:cover;display:block;
 }
-@media (max-width:800px){
+@media (max-width:620px){
   .about-us{padding:80px 24px}
-  .about-inner{grid-template-columns:1fr;gap:40px}
-  .about-photo{max-width:340px}
+  .about-inner{grid-template-columns:1fr;gap:32px}
+  .about-photo{max-width:220px}
 }
 
 /* WAVE DIVIDER */
@@ -1126,13 +1143,13 @@ body{
       <blockquote>
         We build<br class="br-desktop"/>
         what brands<br/>
-        have <span class="outline">not</span> thought<br class="br-desktop"/>
+        have<span class="outline">n’t</span><span class="gap-sm"></span>thought<br class="br-desktop"/>
         of <span class="swoosh">yet<span class="pink">.</span></span>
       </blockquote>
       <div class="hero-cats">
         <div class="hero-cat">
           <h3>Problem</h3>
-          <p>You're stuck, or not moving fast enough. We dig out the real problem hiding under the obvious one.</p>
+          <p>You're stuck, or not moving fast enough. We find the real problem underneath the obvious one.</p>
         </div>
         <div class="hero-cat">
           <h3>Wish</h3>
@@ -1155,15 +1172,15 @@ body{
       <div class="svc-wrap reveal">
         <div class="svc-tabs" role="tablist">
           <button class="svc-tab s1 active" role="tab" data-p="svc-p1" aria-selected="true">
-            <span class="svc-mini"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 0 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></span>
+            <span class="svc-mini"><span class="material-symbols-outlined svc-msym">toys_and_games</span></span>
             Problem
           </button>
           <button class="svc-tab s2" role="tab" data-p="svc-p2" aria-selected="false">
-            <span class="svc-mini"><svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/><path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/><path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/></svg></span>
+            <span class="svc-mini"><span class="material-symbols-outlined svc-msym">emoji_objects</span></span>
             Wish
           </button>
           <button class="svc-tab s3" role="tab" data-p="svc-p3" aria-selected="false">
-            <span class="svc-mini"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#5BC23A"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#5BC23A"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></span>
+            <span class="svc-mini"><span class="material-symbols-outlined svc-msym">partner_exchange</span></span>
             Collaboration
           </button>
         </div>
@@ -1172,43 +1189,46 @@ body{
           <button class="svc-nav svc-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6 L9 12 L15 18"/></svg></button>
         <div class="svc-panel s1 active" id="svc-p1" role="tabpanel">
           <div class="svc-lead">
-            <div class="svc-icon-row"><div class="svc-bigicon"><svg viewBox="0 0 64 64"><path d="M16 16 h10 a6 6 0 1 1 12 0 h10 v10 a6 6 0 1 0 0 12 v10 h-10 a6 6 0 1 0 -12 0 h-10 v-10 a6 6 0 1 1 0 -12 z" fill="#F5EFE4" transform="translate(0 -1)"/></svg></div><div class="svc-flow"><span style="font-weight:normal">Problem to</span></div></div>
+            <div class="svc-icon-row"><div class="svc-bigicon"><span class="material-symbols-outlined svc-msym">toys_and_games</span></div><div class="svc-flow"><span style="font-weight:normal">Problem to</span></div></div>
             <div class="svc-deliver">Solution<span class="dot">.</span></div>
-            <p>You bring the challenge or issue. We find the answer worth building.</p>
+            <p>You bring the challenge or issue and we find the answer worth building.</p>
+            <span class="svc-underline"></span>
           </div>
           <div class="svc-quotes">
             <span class="svc-lbl">Sounds like</span>
-            <div class="svc-q">Product X is not selling as well as expected.</div>
-            <div class="svc-q">Expansion of the product offer is necessary &amp; I do not know where to start.</div>
-            <div class="svc-q">The target audience has trouble finding the products.</div>
+            <div class="svc-q">&ldquo;Our product is under performing as well as expected.&rdquo;</div>
+            <div class="svc-q">&ldquo;Expanding of the product offer is necessary and we don&rsquo;t know where to start.&rdquo;</div>
+            <div class="svc-q">&ldquo;The target audience has trouble finding our products.&rdquo;</div>
           </div>
         </div>
 
         <div class="svc-panel s2" id="svc-p2" role="tabpanel">
           <div class="svc-lead">
-            <div class="svc-icon-row"><div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none" stroke="#FF7AB6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 L32 16 M12 28 L20 28 M44 28 L52 28 M18 14 L24 20 M46 14 L40 20"/><path d="M22 32 a10 10 0 0 1 20 0 c0 5 -3 8 -5 11 l0 5 l-10 0 l0 -5 c-2 -3 -5 -6 -5 -11 z" fill="#F5EFE4" stroke="#F5EFE4"/><path d="M27 52 l10 0 M28 56 l8 0" stroke="#FF7AB6"/></svg></div><div class="svc-flow"><span style="font-weight:normal">Wish to</span></div></div>
+            <div class="svc-icon-row"><div class="svc-bigicon"><span class="material-symbols-outlined svc-msym">emoji_objects</span></div><div class="svc-flow"><span style="font-weight:normal">Wish to</span></div></div>
             <div class="svc-deliver">Ideas<span class="dot">.</span></div>
-            <p>You have an idea about where you want to be. We shape the concepts to get there.</p>
+            <p>You have a wish where you want to be and we convert them in to realistic ideas.</p>
+            <span class="svc-underline"></span>
           </div>
           <div class="svc-quotes">
             <span class="svc-lbl">Sounds like</span>
-            <div class="svc-q">We want to broaden our reach and appeal to a new audience.</div>
-            <div class="svc-q">We would like to increase support &amp; engagement between different teams.</div>
-            <div class="svc-q">We would like to jump on trend or event X, as it will create more engagement.</div>
+            <div class="svc-q">&ldquo;We want to broaden our reach and appeal to a new audience.&rdquo;</div>
+            <div class="svc-q">&ldquo;We would like to increase support and engagement among different teams.&rdquo;</div>
+            <div class="svc-q">&ldquo;We would like to jump on a trend or event, because it will create more engagement.&rdquo;</div>
           </div>
         </div>
 
         <div class="svc-panel s3" id="svc-p3" role="tabpanel">
           <div class="svc-lead">
-            <div class="svc-icon-row"><div class="svc-bigicon"><svg viewBox="0 0 64 64" fill="none"><circle cx="24" cy="24" r="7" fill="#5BC23A"/><path d="M11 48 c0 -8 6 -13 13 -13 c3 0 6 1 8 3 c-3 3 -5 6 -5 10 z" fill="#5BC23A"/><circle cx="41" cy="24" r="7" fill="#F5EFE4"/><path d="M28 48 c0 -8 6 -13 13 -13 s13 5 13 13 z" fill="#F5EFE4"/></svg></div><div class="svc-flow"><span style="font-weight:normal">Collaboration to</span></div></div>
+            <div class="svc-icon-row"><div class="svc-bigicon"><span class="material-symbols-outlined svc-msym">partner_exchange</span></div><div class="svc-flow"><span style="font-weight:normal">Collaboration to</span></div></div>
             <div class="svc-deliver">Co-Creation<span class="dot">.</span></div>
             <p>You have a direction and want a partner to shape it with you.</p>
+            <span class="svc-underline"></span>
           </div>
           <div class="svc-quotes">
             <span class="svc-lbl">Sounds like</span>
-            <div class="svc-q">Our team seems to be stuck &amp; we do not know what to do about it.</div>
-            <div class="svc-q">We have several ideas, but we do not know how to present it to BOM/stakeholders.</div>
-            <div class="svc-q">Our teams are not fully on board with the direction we're taking.</div>
+            <div class="svc-q">&ldquo;Our team seems to be stuck and we don&rsquo;t know what to do about it.&rdquo;</div>
+            <div class="svc-q">&ldquo;We have several ideas, but we don&rsquo;t know how to present it to management or stakeholders.&rdquo;</div>
+            <div class="svc-q">&ldquo;Our teams are not fully on board with the direction we&rsquo;re taking.&rdquo;</div>
           </div>
         </div>
           <button class="svc-nav svc-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 L15 12 L9 18"/></svg></button>
@@ -1227,8 +1247,9 @@ body{
         <div class="about-text">
           <span class="about-eyebrow">(About us)</span>
           <h2 class="reveal">A small studio<br/>with <span class="pink">big ideas.</span></h2>
-          <p class="reveal">Concept Studio MARA is a Rotterdam-based studio for creative concept development, experience design &amp; brand innovation. We believe strong concepts start with the right questions. Whether you bring a challenge, a wish or a co-creation opportunity, we turn it into something meaningful.</p>
-          <p class="reveal">Let’s begin strong: a good conversation with a coffee that matches the energy!</p>
+          <p class="reveal">Concept Studio MARA is a Rotterdam-based studio for creative concept development, experience design and brand innovation. We believe strong concepts start with the right questions. Whether you bring a challenge, a wish or a co-creation opportunity, we turn it into something actionable.</p>
+          <p class="reveal">Let’s begin strong: a good conversation over a cup of <span class="coffee-word">coffee</span> that matches the energy!</p>
+          <img class="sketch-note reveal" src="assets/sketch-note-hand.png" alt="Iced latte or a matcha!" />
           <div class="about-meta reveal">
             <div class="about-stat"><span class="n">2025</span><span class="l">Founded</span></div>
             <div class="about-stat"><span class="n">RTM</span><span class="l">Rotterdam, NL</span></div>
