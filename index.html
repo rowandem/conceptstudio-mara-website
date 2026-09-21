@@ -592,8 +592,9 @@ body{
 .proj-nav-prev{left:calc(50% - min(75vw,1180px,calc(100vw - 220px))/2 - 62px)}
 .proj-nav-next{right:calc(50% - min(75vw,1180px,calc(100vw - 220px))/2 - 62px)}
 @media(max-width:900px){
-  .proj-sheet{max-width:100%}
-  .proj-overlay{padding:0}
+  .proj-sheet{max-width:100%;width:100%;border-radius:0}
+  .proj-overlay{padding:0;align-items:stretch}
+  .proj-body{padding:26px 18px 34px}
   .proj-nav{display:none}
   .proj-close{top:14px;right:14px;width:44px;height:44px;background:rgba(15,26,92,0.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(10,19,68,0.28)}
   .proj-close:hover{background:rgba(15,26,92,0.92)}
@@ -604,7 +605,7 @@ body{
 .proj-close:hover{background:var(--navy)}
 .proj-hero{aspect-ratio:16/9;background:linear-gradient(150deg,#22307e,#0a1344);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,239,228,0.6)}
 .proj-body{padding:44px clamp(38px,5vw,72px) 52px}
-@media(max-width:700px){.proj-body{padding:32px 24px 38px}}
+
 .proj-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:var(--green);color:var(--navy);padding:5px 12px;border-radius:999px;margin-bottom:14px}
 .proj-title{font-family:'Inter Tight';font-weight:800;font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.03em;line-height:1.05;color:var(--navy);margin-bottom:20px}
 .proj-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px 26px;padding:18px 0;border-top:1px solid rgba(15,26,92,0.14);border-bottom:1px solid rgba(15,26,92,0.14);margin-bottom:24px}
@@ -1158,6 +1159,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   text-transform:uppercase;letter-spacing:0.1em;
 }
 
+@media(max-width:900px){.proj-overlay{padding:0;align-items:flex-start;background:var(--cream)}.proj-sheet{max-width:100%;width:100%;border-radius:0;min-height:100%}.proj-body{padding:26px 18px 34px}}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 </style>
