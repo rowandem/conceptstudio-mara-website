@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=emoji_objects,partner_exchange,toys_and_games" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=emoji_objects,handshake,mail,partner_exchange,toys_and_games" />
 <style>
 :root{
   --navy:#0F1A5C;
@@ -32,7 +32,8 @@
   --cream:#F5EFE4;
   --cream-warm:#EEE5D2;
   --yellow:#F6E94B;
-  --green:#7EE787;
+  --green:#5BC23A;
+  --mint:#7EE787;
   --logo-green:#8CE63C;
   --ink:#0A0E2A;
 }
@@ -293,14 +294,16 @@ body{
 }
 .sidebar-cta{
   margin-top:22px;
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  font-family:'Inter Tight',sans-serif;font-size:16px;font-weight:600;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  align-self:center;
+  font-family:'Inter Tight',sans-serif;font-size:15px;font-weight:600;
   letter-spacing:-0.01em;
   color:var(--navy);background:var(--pink);
-  padding:16px 32px;border-radius:10px;
+  padding:12px 24px;border-radius:9px;
   text-decoration:none;white-space:nowrap;
   transition:transform .2s;
 }
+.cta-msym{font-size:19px;line-height:1;flex-shrink:0}
 .sidebar-cta:hover{
   transform:translateY(-2px);
   background:#F5559E;
@@ -445,13 +448,11 @@ body{
   .hero-cats{gap:18px;margin-top:40px}
 }
 .hero-cat-cta{display:none;align-items:center;justify-content:flex-start;border-top:none;padding-top:0}
-@media (max-width:900px){.hero-cat-cta{display:flex}}
 .hero-cat-cta a{
   display:inline-flex;align-items:center;gap:10px;
   font-family:'Inter Tight',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;
-  font-size:13px;text-transform:uppercase;letter-spacing:0.08em;
   color:var(--navy);background:var(--pink);
-  padding:16px 26px;border-radius:10px;
+  padding:12px 24px;border-radius:9px;
   text-decoration:none;white-space:nowrap;
   transition:transform .2s;
   box-shadow:0 6px 20px rgba(10,19,68,0.25);
@@ -558,6 +559,66 @@ body{
 }
 @media (max-width:900px){.featured{padding:40px 20px;min-height:60vh}}
 
+
+.proj-nav-btn{background:none;border:none;cursor:pointer;font-family:'Inter Tight';font-weight:600;font-size:15px;letter-spacing:-0.01em;color:var(--navy);opacity:0.7;padding:6px 2px;transition:opacity .2s,transform .2s;text-align:left;max-width:47%}
+.proj-nav-btn:hover{opacity:1}
+#projPrev:hover{transform:translateY(-50%)}
+#projNext:hover{transform:translateY(-50%)}
+@media(max-width:600px){.proj-nav-btn{max-width:100%;font-size:14px}}
+.proj-more{margin-top:34px;padding-top:24px;border-top:1px solid rgba(15,26,92,0.14)}
+.proj-more-lbl{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.55;margin-bottom:14px}
+.proj-more-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:100%}
+@media(max-width:600px){.proj-more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.proj-more-card{display:flex;flex-direction:column;gap:9px;background:none;border:none;padding:0;cursor:pointer;text-align:left;transition:transform .25s}
+.proj-more-card:hover{transform:translateY(-3px)}
+.proj-more-thumb{aspect-ratio:4/3;border-radius:9px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,239,228,0.6)}
+.proj-more-thumb.t1{background:linear-gradient(150deg,#22307e,#0a1344)}
+.proj-more-thumb.t2{background:linear-gradient(150deg,#3a4aa0,#141f66)}
+.proj-more-thumb.t3{background:linear-gradient(150deg,#1b2872,#070f36)}
+.proj-more-thumb.t4{background:linear-gradient(150deg,#2b3a90,#101a56)}
+.proj-more-thumb::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 14px,rgba(255,255,255,0.07) 14px,rgba(255,255,255,0.07) 15px)}
+.proj-more-card h5{font-family:'Inter Tight';font-weight:700;font-size:14px;letter-spacing:-0.01em;line-height:1.25;color:var(--navy)}
+.proj-more-card .t{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.55}
+/* PROJECT DETAIL VIEW */
+.proj-overlay{position:fixed;inset:0;z-index:200;background:rgba(10,19,68,0.55);display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}
+.proj-overlay::before{content:"";position:fixed;inset:0;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);pointer-events:none;z-index:-1}
+.proj-overlay.open{display:flex}
+.proj-nav{position:fixed;top:50%;transform:translateY(-50%);flex-shrink:0;width:48px;height:48px;z-index:210;border-radius:50%;border:none;cursor:pointer;background:var(--navy);color:var(--cream);display:flex;align-items:center;justify-content:center;transition:background .18s ease,color .18s ease;margin:0;padding:0;border:none;box-shadow:none;outline-offset:0;flex-shrink:0;box-sizing:border-box}
+.proj-nav svg{width:22px;height:22px;display:block;margin:0 auto;pointer-events:none}
+.proj-nav{padding:0;line-height:0}
+.proj-nav:hover,.proj-nav:focus,.proj-nav:active{transform:translateY(-50%)}
+.proj-nav:hover{background:var(--green);color:var(--navy)}
+.proj-nav:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+.proj-nav-prev{left:calc(50% - min(75vw,1180px,calc(100vw - 220px))/2 - 62px)}
+.proj-nav-next{right:calc(50% - min(75vw,1180px,calc(100vw - 220px))/2 - 62px)}
+@media(max-width:900px){
+  .proj-sheet{max-width:100%}
+  .proj-overlay{padding:0}
+  .proj-nav{display:none}
+  .proj-close{top:14px;right:14px;width:44px;height:44px;background:rgba(15,26,92,0.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(10,19,68,0.28)}
+  .proj-close:hover{background:rgba(15,26,92,0.92)}
+}
+.proj-sheet{position:relative;background:var(--cream);border-radius:22px;width:100%;max-width:min(75vw,1180px,calc(100vw - 220px));overflow:visible;animation:projfade .3s ease}
+@keyframes projfade{from{opacity:0}to{opacity:1}}
+.proj-close{position:fixed;top:28px;right:calc(50% - min(75vw,1180px,calc(100vw - 220px))/2 - 62px);z-index:210;width:38px;height:38px;border:none;border-radius:50%;background:rgba(10,19,68,0.75);color:var(--cream);font-size:22px;line-height:1;cursor:pointer;transition:background .2s}
+.proj-close:hover{background:var(--navy)}
+.proj-hero{aspect-ratio:16/9;background:linear-gradient(150deg,#22307e,#0a1344);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,239,228,0.6)}
+.proj-body{padding:44px clamp(38px,5vw,72px) 52px}
+@media(max-width:700px){.proj-body{padding:32px 24px 38px}}
+.proj-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:var(--green);color:var(--navy);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.proj-title{font-family:'Inter Tight';font-weight:800;font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.03em;line-height:1.05;color:var(--navy);margin-bottom:20px}
+.proj-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px 26px;padding:18px 0;border-top:1px solid rgba(15,26,92,0.14);border-bottom:1px solid rgba(15,26,92,0.14);margin-bottom:24px}
+.proj-meta>div{min-width:0}
+.proj-meta .k{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.55;margin-bottom:4px}
+.proj-meta .v{font-family:'Inter Tight';font-weight:600;font-size:15px;color:var(--navy)}
+.proj-lead{font-family:'Inter Tight';font-weight:500;font-size:19px;line-height:1.4;color:var(--navy);margin-bottom:26px}
+.proj-block{margin-bottom:24px}
+.proj-block h4{font-family:'Inter Tight';font-weight:700;font-size:17px;letter-spacing:-0.01em;margin-bottom:7px;color:var(--navy)}
+.proj-block p{font-family:'Inter';font-size:15px;line-height:1.55;color:var(--navy);opacity:0.82}
+.proj-shot{aspect-ratio:16/9;border-radius:12px;background:linear-gradient(150deg,#2b3a90,#101a56);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,239,228,0.6);margin-bottom:26px}
+.proj-cta{display:inline-flex;align-items:center;font-family:'Inter Tight';font-weight:600;font-size:16px;letter-spacing:-0.01em;color:var(--navy);background:var(--pink);padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .2s,background .2s}
+.proj-cta:hover{transform:translateY(-2px);background:#F5559E}
+@media(max-width:600px){.proj-body{padding:26px 22px 32px}.proj-overlay{padding:20px 12px}}
 /* STORIES GRID */
 .stories{
   background:var(--pink);
@@ -587,13 +648,25 @@ body{
 }
 .story-card{
   cursor:pointer;
-  transition:transform .3s;
+  background:var(--cream);
+  border-radius:16px;
+  padding:14px;
+  transition:transform .3s,box-shadow .3s;
 }
-.story-card:hover{transform:translateY(-4px)}
+.story-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(10,19,68,0.2)}
+.story-card .meta{padding:14px 6px 6px}
+.story-tag{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  background:var(--green);color:var(--navy);
+  padding:4px 10px;border-radius:999px;
+  margin-bottom:10px;
+}
 .story-thumb{
   aspect-ratio:4/3;
-  border-radius:4px;
-  margin-bottom:16px;
+  border-radius:10px;
+  margin-bottom:0;
   position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   font-family:'JetBrains Mono',monospace;font-size:10px;
@@ -608,8 +681,8 @@ body{
 .story-thumb.t2{background:linear-gradient(135deg,#C9966B,#8B5A3C)}
 .story-thumb.t3{background:linear-gradient(135deg,#D4A574,#8B6C4F)}
 .story-thumb.t4{background:linear-gradient(135deg,#7A9B5A,#4F6B3A)}
-.story-card .date{
-  font-family:'JetBrains Mono',monospace;font-size:10px;
+.story-card .meta .date{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
   color:var(--navy);opacity:0.6;
   text-transform:uppercase;letter-spacing:0.1em;
   display:block;margin-bottom:6px;
@@ -653,15 +726,15 @@ body{
 .svc-stage .svc-panel{flex:1;min-width:0}
 .svc-nav{flex-shrink:0;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:var(--navy);color:var(--cream);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
 .svc-nav svg{width:22px;height:22px}
-.svc-nav:hover{background:#5BC23A;color:var(--navy);transform:scale(1.08)}
+.svc-nav:hover{background:var(--green);color:var(--navy);transform:scale(1.08)}
 .svc-nav:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
 .svc-tab.active .svc-arrow{color:var(--accent);opacity:1}
-.svc-tab.s1{--accent:var(--navy)}.svc-tab.s2{--accent:var(--pink)}.svc-tab.s3{--accent:#5BC23A}
+.svc-tab.s1{--accent:var(--navy)}.svc-tab.s2{--accent:var(--pink)}.svc-tab.s3{--accent:var(--green)}
 .svc-panel{background:var(--cream);border-radius:24px;padding:52px 56px;display:none;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center;animation:svcfade .35s ease;position:relative;overflow:hidden}
 .svc-panel::after{content:"";position:absolute;top:-160px;right:-126px;width:250px;height:250px;border-radius:50%;border:52px solid var(--accent);pointer-events:none;z-index:0}
 .svc-lead,.svc-quotes{position:relative;z-index:1}
 .svc-panel.active{display:grid}
-.svc-panel.s1{--accent:var(--navy)}.svc-panel.s2{--accent:var(--pink)}.svc-panel.s3{--accent:#5BC23A}
+.svc-panel.s1{--accent:var(--navy)}.svc-panel.s2{--accent:var(--pink)}.svc-panel.s3{--accent:var(--green)}
 @keyframes svcfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .svc-panel.slide-in-right{animation:svcInRight .42s cubic-bezier(.22,.61,.36,1)}
 .svc-panel.slide-in-left{animation:svcInLeft .42s cubic-bezier(.22,.61,.36,1)}
@@ -685,7 +758,7 @@ body{
 .svc-quotes .svc-q::before{content:none}
 .svc-cta-wrap{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:36px}
 .svc-cta-wrap span{font-family:'Inter Tight';font-weight:600;font-size:17px;color:var(--navy)}
-.svc-cta{display:inline-flex;align-items:center;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;color:var(--navy);background:#5BC23A;padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .2s}
+.svc-cta{display:inline-flex;align-items:center;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;color:var(--navy);background:var(--green);padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .2s}
 .svc-cta:hover{transform:translateY(-2px);background:#4AA82F}
 @media(max-width:1100px){.svc-panel{grid-template-columns:1fr;gap:32px;padding:40px 32px}.svc-panel::after{width:170px;height:170px;border-width:36px;top:-112px;right:-88px}.svc-underline{margin-left:0}.svc-lead p{max-width:none}}
 @media(max-width:860px){.svc-panel{padding:34px 24px}.svc-panel::after{width:150px;height:150px;border-width:32px;top:-108px;right:-84px}.svc-nav{width:40px;height:40px}.svc-stage{gap:6px}}
@@ -730,7 +803,7 @@ body{
   font-size:1em;line-height:1;
 }
 .itin-body h4 .to{
-  background:#5BC23A;color:var(--navy);
+  background:var(--green);color:var(--navy);
   padding:3px 12px;border-radius:10px;
   white-space:nowrap;
 }
@@ -794,9 +867,9 @@ body{
 .itin-row:nth-child(2) .itin-quotes li::before{color:#FFB6D6}
 .itin-row:nth-child(2) .itin-quotes li::after{color:#FFB6D6}
 /* Row 3 (Collaboration) — green accent */
-.itin-row:nth-child(3) .itin-quotes li{border-left:3px solid #5BC23A;background:#ffffff}
-.itin-row:nth-child(3) .itin-quotes li::before{color:#5BC23A}
-.itin-row:nth-child(3) .itin-quotes li::after{color:#5BC23A}
+.itin-row:nth-child(3) .itin-quotes li{border-left:3px solid var(--green);background:#ffffff}
+.itin-row:nth-child(3) .itin-quotes li::before{color:var(--green)}
+.itin-row:nth-child(3) .itin-quotes li::after{color:var(--green)}
 .itin-img{
   border-radius:999px;
   width:72px;height:72px;
@@ -892,6 +965,39 @@ body{
   .about-inner{grid-template-columns:minmax(0,1fr) minmax(0,36%);gap:18px;align-items:center}
   .about-photo{max-width:none;aspect-ratio:3/4}
 }
+
+.story-thumb.has-img,.proj-more-thumb.has-img{padding:0;overflow:hidden}
+.story-thumb.has-img::before,.story-thumb.has-img::after,.proj-more-thumb.has-img::before,.proj-more-thumb.has-img::after,.proj-hero.has-img::before,.proj-hero.has-img::after{content:none}
+.story-thumb.has-img img,.proj-more-thumb.has-img img{width:100%;height:100%;object-fit:cover;display:block}
+.proj-hero.has-img{aspect-ratio:auto;padding:0;overflow:hidden;background:rgba(15,26,92,0.06);display:flex;align-items:center;justify-content:center}
+.proj-hero.has-img img{width:100%;height:auto;max-height:76vh;object-fit:contain;display:block}
+.proj-split{display:block}
+.proj-split>p{margin:0}
+.proj-sketches{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0 0;align-items:start}
+.proj-sketches figure{margin:0;border-radius:12px;overflow:hidden}
+.proj-sketches img{width:100%;height:auto;object-fit:contain;display:block}
+@media(max-width:720px){.proj-split{grid-template-columns:1fr;gap:18px}.proj-sketches{grid-template-columns:1fr 1fr;max-width:420px}}
+.proj-shot.has-img{margin:0 0 28px;padding:0;overflow:hidden;border-radius:14px;background:none;display:block;aspect-ratio:auto}
+.proj-shot.has-img img{width:100%;height:auto;display:block;margin:0 auto;border-radius:14px}
+
+.story-card-soon{cursor:default}
+.story-card-soon:hover{transform:none;box-shadow:none}
+.story-card-soon .story-thumb{background:rgba(15,26,92,0.12);border:1px dashed rgba(15,26,92,0.28)}
+.story-card-soon .story-thumb span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy);opacity:0.6}
+.story-card-soon .story-tag{background:rgba(15,26,92,0.14);color:var(--navy)}
+.story-card-soon h3,.story-card-soon .date{opacity:0.6}
+
+/* --- accessibility tuning --- */
+.outro-links a{padding:8px 4px;display:inline-flex;align-items:center;min-height:36px}
+.outro-links{gap:20px;flex-wrap:wrap}
+.sidebar-social a{width:40px;height:40px}
+.split-tabs a{min-width:34px}
+.contact-item .label,.about-stat .l,.section-eyebrow,.about-eyebrow,.outro-copyright,.story-card .date,.story-tag,.proj-tag,.proj-meta .k,.svc-lbl,.proj-more-lbl,.story-card-soon .date{font-size:11px}
+.story-card .meta .date,.story-card-soon .meta .date{font-size:11px}
+.contact-item .val a,.contact-item a{display:inline-block;padding:6px 0;min-height:32px}
+.outro-social a{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center}
+.split-tabs a{font-size:11px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
 
 /* WAVE DIVIDER */
 .wave{
@@ -1047,7 +1153,7 @@ body{
 .outro-social a{color:inherit;text-decoration:none;opacity:0.7;transition:opacity .2s}
 .outro-social a:hover{opacity:1}
 .outro-copyright{
-  font-family:'JetBrains Mono',monospace;font-size:10px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
   color:var(--navy);opacity:0.5;
   text-transform:uppercase;letter-spacing:0.1em;
 }
@@ -1070,10 +1176,11 @@ body{
 
   <!-- SPLIT TABS (straddle the blue/cream divider) -->
   <nav class="split-tabs" style="font-family: system-ui; font-weight: 400; width: 108px; gap: 4px">
-    <a href="#csm" class="active" style="font-family: monospace; font-size: 10px; width: 30px">CSM</a>
-    <a href="#services" style="font-size: 10px; width: 30px">Services</a>
-    <a href="#aboutus" style="font-size: 10px; width: 30px">About Us</a>
-    <a href="#contact" style="font-size: 10px; width: 30px">Contact</a>
+    <a href="#csm" class="active" >CSM</a>
+    <a href="#services" >Services</a>
+    <a href="#aboutus" >About Us</a>
+    <a href="#stories" >Projects</a>
+    <a href="#contact" >Contact</a>
   </nav>
 
   <!-- STATIC LEFT -->
@@ -1103,7 +1210,7 @@ body{
       </div>
 
       <a href="#contact" class="sidebar-cta" id="bookCta">
-        <span>Book an appointment</span>
+        <span>Get in touch</span><span class="material-symbols-outlined cta-msym">handshake</span>
       </a>
     </div>
 
@@ -1168,7 +1275,7 @@ body{
           <p>Give us a brief or hand us nothing. Either way, we co-create it together.</p>
         </div>
         <div class="hero-cat hero-cat-cta">
-          <a href="#contact">Let's meet</a>
+          <a href="#contact"><span>Let's meet</span><span class="material-symbols-outlined cta-msym">handshake</span></a>
         </div>
       </div>
     </section>
@@ -1268,35 +1375,57 @@ body{
     </section>
 
     <!-- STORIES -->
-    <section class="stories" id="stories" data-screen-label="stories" style="display:none">
+    <section class="stories" id="stories" data-screen-label="stories">
       <span class="section-eyebrow">(Projects)</span>
-      <h2 class="reveal">Selected <span class="pink">projects.</span></h2>
+      <h2 class="reveal">Ideas that became <span class="pink">concepts.</span></h2>
       <div class="stories-grid">
-        <div class="story-card reveal">
-          <div class="story-thumb t1">[ project image 01 ]</div>
-          <span class="date">10 October 2025</span>
-          <h3>Project title goes here, concept-led campaign</h3>
+        <div class="story-card reveal" data-proj="0">
+          <div class="story-thumb t1 has-img"><img src="assets/susan-bijl-thumb.png" alt="ReCollect concept bag with drink holder" /></div>
+          <div class="meta">
+            <span class="story-tag">Product</span>
+            <span class="date">Self initiated</span>
+            <h3>ReCollect</h3>
+          </div>
         </div>
-        <div class="story-card reveal">
-          <div class="story-thumb t2">[ project image 02 ]</div>
-          <span class="date">2 October 2025</span>
-          <h3>Another project title, product launch</h3>
-        </div>
-        <div class="story-card reveal">
-          <div class="story-thumb t3">[ project image 03 ]</div>
-          <span class="date">17 September 2025</span>
-          <h3>Workshop series, dangerous teams</h3>
-        </div>
-        <div class="story-card reveal">
-          <div class="story-thumb t4">[ project image 04 ]</div>
-          <span class="date">2 September 2025</span>
-          <h3>Brand identity, ground-up rebuild</h3>
+        <div class="story-card story-card-soon reveal">
+          <div class="story-thumb t2"><span>Coming soon</span></div>
+          <div class="meta">
+            <span class="story-tag">Next up</span>
+            <span class="date">In progress</span>
+            <h3>New concept in the making (Lowlands)</h3>
+          </div>
         </div>
       </div>
     </section>
 
+
+    <!-- PROJECT DETAIL -->
+    <div class="proj-overlay" id="projOverlay" role="dialog" aria-modal="true" aria-labelledby="projTitle">
+      <button class="proj-nav proj-nav-prev" id="projPrev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="proj-sheet">
+        <button class="proj-close" id="projClose" aria-label="Close">&times;</button>
+        <div class="proj-hero" id="projHero" style="display:none"></div>
+        <div class="proj-body">
+          <span class="proj-tag" id="projTag">Campaign</span>
+          <h3 class="proj-title" id="projTitle" style="color: #FF65B9">Project title goes here</h3>
+          <div class="proj-meta">
+            <div><span class="k">Client</span><span class="v" id="projClient">Client name</span></div>
+            <div><span class="k">Year</span><span class="v" id="projYear">2025</span></div>
+            <div><span class="k">Service</span><span class="v" id="projService">Concept development</span></div>
+          </div>
+          <p class="proj-lead" id="projLead"></p>
+          <div id="projBlocks"></div>
+          <div class="proj-more">
+            <span class="proj-more-lbl">More projects</span>
+            <div class="proj-more-grid" id="projMore"></div>
+          </div>
+        </div>
+      </div>
+      <button class="proj-nav proj-nav-next" id="projNext" type="button" aria-label="Next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+
     <!-- WAVE DIVIDER -->
-    <div class="wave" style="background-color: #0F1A5C">
+    <div class="wave" style="background-color: #FF7AB6">
       <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
         <path d="M0,60 L0,30 Q150,0 300,30 T600,30 T900,30 T1200,30 L1200,60 Z" fill="#F5EFE4"/>
       </svg>
@@ -1345,7 +1474,7 @@ body{
         </div>
         <div class="form-row conditional" id="field-when">
           <label for="cf-when">Preferred date &amp; time</label>
-          <input type="text" id="cf-when" name="when" placeholder="e.g. week of 14 July, mornings" />
+          <input type="text" id="cf-when" name="when" placeholder="e.g. next week, mornings" />
           <span class="form-error-msg" data-for="cf-when">Please add a preferred date or time.</span>
         </div>
         <button type="submit" class="form-submit">Send<svg class="btn-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg></button>
@@ -1356,6 +1485,7 @@ body{
         <a href="#csm">Home</a>
         <a href="#services">Services</a>
         <a href="#aboutus">About Us</a>
+        <a href="#stories">Projects</a>
         <a href="mailto:mara@conceptstudiomara.com">Contact</a>
       </div>
       <div class="outro-social">
@@ -1387,6 +1517,94 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+
+// Project detail view
+const projData=[
+ {tag:'Product',title:'ReCollect',client:'Susan Bijl (self-initiated concept)',year:'2026',service:'Product development',thumb:'t1',
+  hero:'assets/susan-bijl-bag.jpg',
+  shot:'assets/susan-bijl-pouch.jpg',
+  lead:'Susan Bijl started with the idea to replace single use plastic bags and reduce the waste that comes with it. This self-initiated concept was developed after a trip to South Korea. Walking around in Seoul I thought: wow, there is barely any rubbish on the street but there are also no bins?<br/><br/>What do you do with the cup, can or bottle in your hand when there is nowhere to put it?',
+  blocks:[
+   {h:'Challenge?',p:'Walking around in South Korea made me realise something: how there is barely any rubbish on the streets. When you walk around in Rotterdam, especially the last 1.5 years, there is a LOT of rubbish on the streets in the city centre.<br/><br/>Bins are either full or broken into, which makes it sometimes difficult to throw away your bottles, cans, wrappers, whatever. In South Korea, there are no bins and there is no rubbish on the floor. How is that possible?<br/><br/><strong>Why don&rsquo;t you just take a reusable bottle and fill it with water instead of getting a coffee or water?</strong><br/>Ok, valid point, but sometimes I just want to wear a hand bag instead of a backpack and still be hydrated or caffeinated.<br/><br/><strong>Why don&rsquo;t you just hold the cup until you come across a bin?</strong><br/>Another valid point, but there are SO little bins in South Korea. When I went back to Rotterdam and started roaming around, I found so MANY bins but they were all full or broken into. In this case I either piled my cup on top of the overflowing bin or became annoyed and took it home (with the risk of it leaking into my bag).<br/><br/>As Susan Bijl started from the idea of replacing the single use plastic bags, I saw a direct shared sustainable vision.'},
+   {h:'Creative process',p:'The problem was very clear and came to me just living my best life. In this case, because the problem was so clear, the process was short, sharp and effective.<br/><br/>While putting the problem on paper, my brain already starts working towards an idea. However, we first need to research the market on the following pillars:<br/><br/>&bull; Market trends<br/>&bull; Brand values<br/>&bull; Competitor gaps<br/>&bull; Commercial opportunities<br/><br/>Brainstorming for a fictional project is a little different from working on a real client brief. Without budgets, timelines, or stakeholder constraints, the possibilities are almost endless, allowing creativity to roam freely.<br/><br/>That said, the ideation phase still followed the same approach I would use in a real project: exploring different directions, challenging assumptions, and continuously refining ideas through multiple iterations.<br/><br/>Since I was working on this independently, the process looked slightly different from the collaborative workshops I would normally facilitate. Instead of building on the perspectives of a broader team, I deliberately explored multiple concept territories and challenged my own thinking to arrive at the strongest concept. Some random ideas that were part of the brainstorm:<br/><br/>&bull; Concept launch during World Clean Up Day would make this a very strong story<br/>&bull; Collaboration ideas:<br/>&nbsp;&nbsp;&nbsp;&ndash; Spa or Chaudfontaine: logical as they are the source<br/>&nbsp;&nbsp;&nbsp;&ndash; Festivals like Blijdorp Festival or North Sea Jazz: as they have a strict sustainability policy<br/>&nbsp;&nbsp;&nbsp;&ndash; Gemeente Rotterdam: a small nudge towards a solution to the big trash problem',
+    sketches:['assets/sb-sketch-1.jpg','assets/sb-sketch-2.jpg']}
+  ]},
+ {tag:'Next up',title:'New concept in the making (Lowlands)',client:'To be announced',year:'In progress',service:'Coming soon',thumb:'t2',soon:true,
+  lead:'A new concept is currently in development around Lowlands. The full case study, with the challenge, the creative process and the result, will land here once it is ready.',
+  blocks:[
+   {h:'Challenge?',p:'Still being written. This section will set out the problem, wish or collaboration the concept started from, in the same way as the other case studies.'},
+   {h:'Creative process',p:'Still being written. This section will cover the research pillars, the directions explored and the sketches made along the way.'},
+   {h:'Result',p:'Still being written. This section will show the final concept and the pieces that came out of it.'}
+  ]},
+];
+const projOverlay=document.getElementById('projOverlay');
+if(projOverlay){
+  const closeBtn=document.getElementById('projClose');
+  const sheet=projOverlay.querySelector('.proj-sheet');
+  let projIndex=0;
+  function shortTitle(t){return t.split(',')[0];}
+  function openProj(i){
+    const n=projData.length;
+    projIndex=((i%n)+n)%n;
+    const d=projData[projIndex];
+    document.getElementById('projTag').textContent=d.tag;
+    document.getElementById('projTitle').textContent=d.title;
+    document.getElementById('projClient').textContent=d.client;
+    document.getElementById('projYear').textContent=d.year;
+    document.getElementById('projService').textContent=d.service;
+    const hero=document.getElementById('projHero');
+    if(d.hero){hero.innerHTML='';hero.classList.remove('has-img');hero.style.display='none';}
+    else{hero.innerHTML='';hero.classList.remove('has-img');hero.style.display='none';}
+    document.getElementById('projLead').innerHTML=d.lead||'One short paragraph on what the brief was and why it mattered. Replace with the real story.';
+    const blocks=document.getElementById('projBlocks');
+    const list=d.blocks||[
+      {h:'The challenge',p:'Placeholder. Describe the problem, wish or collaboration the client arrived with.'},
+      {h:'What we did',p:'Placeholder. Outline the concept, the approach and the pieces that were made.'},
+      {h:'The result',p:'Placeholder. Share the outcome, ideally with one number or a quote from the client.'}
+    ];
+    const heroFig=d.hero?'<figure class="proj-shot has-img"><img src="'+d.hero+'" alt="'+d.title+'" /></figure>':'';
+    blocks.innerHTML=heroFig+list.map((b,bi)=>{
+      const shot='';
+      const sk=b.sketches?'<div class="proj-sketches">'+b.sketches.map(s=>'<figure><img src="'+s+'" alt="Concept sketch" /></figure>').join('')+'</div>':'';
+      const body=sk?'<div class="proj-split"><p>'+b.p+'</p>'+sk+'</div>':'<p>'+b.p+'</p>';
+      return '<div class="proj-block"><h4>'+b.h+'</h4>'+body+'</div>'+shot;
+    }).join('')+(d.shot?'<figure class="proj-shot has-img"><img src="'+d.shot+'" alt="'+d.title+'" /></figure>':'');
+    const more=document.getElementById('projMore');
+    more.innerHTML='';
+    projData.forEach((p,k)=>{
+      if(k===projIndex||p.soon)return;
+      const b=document.createElement('button');
+      b.type='button';b.className='proj-more-card';
+      b.innerHTML='<div class="proj-more-thumb '+p.thumb+(p.hero?' has-img':'')+'">'+(p.hero?'<img src="'+p.hero+'" alt="" />':'[ image ]')+'</div><span class="t">'+p.tag+'</span><h5>'+shortTitle(p.title)+'</h5>';
+      b.addEventListener('click',()=>openProj(k));
+      more.appendChild(b);
+    });
+    more.parentElement.style.display=more.children.length?'':'none';
+    projOverlay.classList.add('open');
+    document.body.style.overflow='hidden';
+    projOverlay.scrollTop=0;
+    closeBtn.focus();
+  }
+  function closeProj(){projOverlay.classList.remove('open');document.body.style.overflow='';}
+  document.querySelectorAll('.story-card:not(.story-card-soon)').forEach(c=>{
+    if(c.dataset.proj===undefined)return;
+    c.addEventListener('click',()=>openProj(+c.dataset.proj||0));
+  });
+  closeBtn.addEventListener('click',closeProj);
+  const pPrev=document.getElementById('projPrev'),pNext=document.getElementById('projNext');
+  const canNavigate=projData.filter(p=>!p.soon).length>1;
+  if(!canNavigate){if(pPrev)pPrev.style.display='none';if(pNext)pNext.style.display='none';}
+  if(pPrev&&canNavigate)pPrev.addEventListener('click',()=>openProj(projIndex-1));
+  if(pNext&&canNavigate)pNext.addEventListener('click',()=>openProj(projIndex+1));
+  projOverlay.addEventListener('click',e=>{if(e.target===projOverlay)closeProj();});
+  document.addEventListener('keydown',e=>{
+    if(!projOverlay.classList.contains('open'))return;
+    if(e.key==='Escape')closeProj();
+    if(!canNavigate)return;
+    if(e.key==='ArrowRight')openProj(projIndex+1);
+    if(e.key==='ArrowLeft')openProj(projIndex-1);
+  });
+}
 // Service tabs (Option B)
 const svcTabs=[...document.querySelectorAll('.svc-tab')];
 function activateSvc(i,fromArrow){
@@ -1507,14 +1725,6 @@ if(cform){
     }
   });
 
-  // Sidebar CTA pre-selects the appointment option
-  const bookCta = document.getElementById('bookCta');
-  if(bookCta){
-    bookCta.addEventListener('click',()=>{
-      const appt = cform.querySelector('input[name="intent"][value="appointment"]');
-      if(appt){appt.checked = true; updateFields();}
-    });
-  }
 }
 
 // Sidebar nav active state (click)
