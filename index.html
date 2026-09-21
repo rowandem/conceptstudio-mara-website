@@ -38,7 +38,7 @@
   --ink:#0A0E2A;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{
   font-family:'Inter',system-ui,sans-serif;
   background:var(--sky);
@@ -1744,12 +1744,29 @@ function setActive(id){
   navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
   if(history.replaceState){try{history.replaceState(null,'', '#'+id);}catch(e){}}
 }
+const SECTION_OFFSET={services:56,aboutus:56};
+function setScrollTop(y){
+  try{window.scrollTo({top:y,behavior:'instant'});}catch(e){}
+  if(Math.abs(window.scrollY-y)>2){
+    const de=document.documentElement,prev=de.style.scrollBehavior;
+    de.style.scrollBehavior='auto';de.scrollTop=y;de.style.scrollBehavior=prev;
+  }
+}
+function scrollToSection(id){
+  const el=document.getElementById(id)||(id==='csm'?document.querySelector('.quote-hero'):null);
+  if(!el)return false;
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const to=Math.max(0,Math.min(max,el.getBoundingClientRect().top+window.scrollY-(SECTION_OFFSET[id]||0)));
+  setScrollTop(to);
+  return Math.abs(window.scrollY-to)<=2;
+}
 navLinks.forEach(a=>{
-  a.addEventListener('click',()=>{
+  a.addEventListener('click',(e)=>{
     const id=a.getAttribute('href').slice(1);
     const ov=document.getElementById('projOverlay');
     if(ov&&ov.classList.contains('open')){ov.classList.remove('open');document.body.style.overflow='';document.body.classList.remove('proj-open');}
     spyLock=Date.now()+900;
+    if(scrollToSection(id)){e.preventDefault();}
     setActive(id);
   });
 });
@@ -1781,7 +1798,24 @@ function onScrollSpy(){
 }
 window.addEventListener('scroll', onScrollSpy, {passive:true});
 window.addEventListener('resize', onScrollSpy, {passive:true});
-onScrollSpy();
+// Deep link: honour #hash on load before the spy rewrites it
+(function(){
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  const raw=(location.hash||'').replace('#','');
+  if(!raw){onScrollSpy();return;}
+  const target=document.getElementById(raw)||(raw==='csm'?document.querySelector('.quote-hero'):null);
+  if(!target){onScrollSpy();return;}
+  spyLock=Date.now()+1800;
+  setActive(raw);
+  const jump=()=>{
+    const y=Math.max(0,target.getBoundingClientRect().top+window.scrollY-(SECTION_OFFSET[raw]||0));
+    setScrollTop(y);
+  };
+  jump();
+  requestAnimationFrame(jump);
+  window.addEventListener('load',()=>{jump();setTimeout(jump,120);setTimeout(jump,400);});
+})();
+
 </script>
 </body>
 </html>
